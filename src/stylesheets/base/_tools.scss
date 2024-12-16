@@ -1,0 +1,1091 @@
+@use "../core/mixins" as mix;
+@use "../core/variables" as var;
+
+//Tools
+.d {
+    &-flex {
+        display: flex;
+    }
+    &-inline-flex {
+        display: inline-flex;
+    }
+    &-block {
+        display: block;
+    }
+    &-inline-block {
+        display: inline-block;
+    }
+    &-inline {
+        display: inline;
+    }
+    &-none {
+        display: none;
+    }
+    &-mh {
+        @include mix.bbetween(xs, md){
+            &-flex {
+                display: flex;
+            }
+            &-inline-flex {
+                display: inline-flex;
+            }
+            &-block {
+                display: block;
+            }
+            &-inline-block {
+                display: inline-block;
+            }
+            &-inline {
+                display: inline;
+            }
+            &-none {
+                display: none;
+            }
+        }
+    }
+    &-mv {
+        @include mix.bdown(xs){
+            &-flex {
+                display: flex;
+            }
+            &-inline-flex {
+                display: inline-flex;
+            }
+            &-block {
+                display: block;
+            }
+            &-inline-block {
+                display: inline-block;
+            }
+            &-inline {
+                display: inline;
+            }
+            &-none {
+                display: none;
+            }
+        }
+    }
+    &-r,
+    &-dt {
+        @include mix.bup(md){
+            &-flex {
+                display: flex;
+            }
+            &-inline-flex {
+                display: inline-flex;
+            }
+            &-block {
+                display: block;
+            }
+            &-inline-block {
+                display: inline-block;
+            }
+            &-inline {
+                display: inline;
+            }
+            &-none {
+                display: none;
+            }
+        }
+    }
+    &-ls {
+        @include mix.bup(ls){
+            &-flex {
+                display: flex;
+            }
+            &-inline-flex {
+                display: inline-flex;
+            }
+            &-block {
+                display: block;
+            }
+            &-inline-block {
+                display: inline-block;
+            }
+            &-inline {
+                display: inline;
+            }
+            &-none {
+                display: none;
+            }
+        }
+    }
+}
+.p {
+    &-static {
+        position: static;
+    }
+    &-relative {
+        position: relative;
+    }
+    &-absolute {
+        position: absolute;
+    }
+    &-sticky {
+        position: sticky;
+    }
+}
+.border {
+    border-width: 0;
+    border-style: solid;
+    border-color: var.$black;
+    
+    &-all {
+        &-width {
+            @for $i from 0 through 10 {
+                &-#{$i} {
+                    border-width: #{$i}px;
+                }
+            }
+        }
+    }
+    &-top {
+        &-width {
+            @for $i from 0 through 10 {
+                &-#{$i} {
+                    border-top-width: #{$i}px;
+                }
+            }
+        }
+    }
+    &-bottom {
+        &-width {
+            @for $i from 0 through 10 {
+                &-#{$i} {
+                    border-bottom-width: #{$i}px;
+                }
+            }
+        }
+    }
+    &-left {
+        &-width {
+            @for $i from 0 through 10 {
+                &-#{$i} {
+                    border-left-width: #{$i}px;
+                }
+            }
+        }
+    }
+    &-right {
+        &-width {
+            @for $i from 0 through 10 {
+                &-#{$i} {
+                    border-right-width: #{$i}px;
+                }
+            }
+        }
+    }
+    &-color {
+        &-yellow {
+            border-color: var.$yellow;
+        }
+        &-purple {
+            border-color: var.$purple;
+        }
+        &-white {
+            border-color: var.$white;
+        }
+        &-beige {
+            border-color: var.$beige;
+        }
+        &-gray {
+            border-color: var.$gray;
+        }
+        &-black {
+            border-color: var.$black;
+        }
+        &-black-alt {
+            border-color: var.$blackalt;
+        }
+        &-base {
+            border-color: var.$base;
+        }
+        &-red {
+            border-color: var.$red;
+        }
+        &-orange {
+            border-color: var.$orange;
+        }
+        &-scarlet {
+            border-color: var.$scarlet;
+        }
+        &-green {
+            border-color: var.$green;
+        }
+        &-blue {
+            border-color: var.$blue;
+        }
+        &-pink {
+            border-color: var.$pink;
+        }
+    }
+    &-style {
+        &-dotted {
+            border-style: dotted;
+        }
+        &-dashed {
+            border-style: dashed;
+        }
+        &-solid {
+            border-style: solid;
+        }
+        &-double {
+            border-top-style: double;
+            border-bottom-style: double;
+            border-left-style: double;
+            border-right-style: double;
+        }
+    }
+    &-radius {
+        &-4 {
+            border-radius: 4px;
+        }
+        &-5 {
+            border-radius: 5px;
+        }
+        &-6 {
+            border-radius: 6px;
+        }
+        &-7 {
+            border-radius: 7px;
+        }
+        &-8 {
+            border-radius: 8px;
+        }
+        &-9 {
+            border-radius: 9px;
+        }
+        &-10 {
+            border-radius: 10px;
+        }
+        &-rounded {
+            border-radius: 50%;
+        }
+    }
+}
+.flex {
+    &-aic {
+        align-items: center;
+    }
+    &-ait {
+        align-items: flex-start;
+    }
+    &-aib {
+        align-items: flex-end;
+    }
+    &-jcs {
+        justify-content: flex-start;
+    }
+    &-jce {
+        justify-content: flex-end;
+    }
+    &-jcc {
+        justify-content: center;
+    }
+    &-jcsb {
+        justify-content: space-between;
+    }
+    &-jcsa {
+        justify-content: space-around;
+    }
+    &-direction {
+        &-column {
+            flex-direction: column;
+            &-reverse {
+                flex-direction: column-reverse;
+            }
+        }
+        &-row {
+            flex-direction: row;
+            &-reverse {
+                flex-direction: row-reverse;
+            }
+        }
+        &-dt {
+            @include mix.bup(md){
+                &-column {
+                    flex-direction: column;
+                    &-reverse {
+                        flex-direction: column-reverse;
+                    }
+                }
+                &-row {
+                    flex-direction: row;
+                    &-reverse {
+                        flex-direction: row-reverse;
+                    }
+                }
+            }
+        }
+        &-ls {
+            @include mix.bup(ls){
+                &-column {
+                    flex-direction: column;
+                    &-reverse {
+                        flex-direction: column-reverse;
+                    }
+                }
+                &-row {
+                    flex-direction: row;
+                    &-reverse {
+                        flex-direction: row-reverse;
+                    }
+                }
+            }
+        }
+        &-mh {
+            @include mix.bbetween(xs, md){
+                &-column {
+                    flex-direction: column;
+                    &-reverse {
+                        flex-direction: column-reverse;
+                    }
+                }
+                &-row {
+                    flex-direction: row;
+                    &-reverse {
+                        flex-direction: row-reverse;
+                    }
+                }
+            }
+        }
+        &-mv {
+            @include mix.bdown(xs){
+                &-column {
+                    flex-direction: column;
+                    &-reverse {
+                        flex-direction: column-reverse;
+                    }
+                }
+                &-row {
+                    flex-direction: row;
+                    &-reverse {
+                        flex-direction: row-reverse;
+                    }
+                }
+            }
+        }
+    }
+}
+.text {
+    &-left {
+        text-align: left;
+    }
+    &-center {
+        text-align: center;
+    }
+    &-right {
+        text-align: right;
+    }
+    &-justify {
+        text-align: justify;
+    }
+    &-uc {
+        text-transform: uppercase;
+    }
+    &-lc{
+        text-transform: lowercase;
+    }
+    &-cz {
+        text-transform: capitalize;
+    }
+    &-r,
+    &-dt {
+        @include mix.bup(md){
+            &-left {
+                text-align: left;
+            }
+            &-center {
+                text-align: center;
+            }
+            &-right {
+                text-align: right;
+            }
+            &-justify {
+                text-align: justify;
+            }
+        }
+    }
+    &-ls {
+        @include mix.bup(ls){
+            &-left {
+                text-align: left;
+            }
+            &-center {
+                text-align: center;
+            }
+            &-right {
+                text-align: right;
+            }
+            &-justify {
+                text-align: justify;
+            }
+        }
+    }
+    &-mh {
+        @include mix.bbetween(xs, md){
+            &-left {
+                text-align: left;
+            }
+            &-center {
+                text-align: center;
+            }
+            &-right {
+                text-align: right;
+            }
+            &-justify {
+                text-align: justify;
+            }
+        }
+    }
+    &-mv {
+        @include mix.bdown(xs){
+            &-left {
+                text-align: left;
+            }
+            &-center {
+                text-align: center;
+            }
+            &-right {
+                text-align: right;
+            }
+            &-justify {
+                text-align: justify;
+            }
+        }
+    }
+}
+.float {
+    &-container {
+        &:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+    }
+    &-left {
+        float: left;
+    }
+    &-right {
+        float: right;
+    }
+    &-dt {
+        @include mix.bup(md){
+            &-left {
+                float: left;
+            }
+            &-right {
+                float: right;
+            }
+        }
+    }
+    &-ls {
+        @include mix.bup(ls){
+            &-left {
+                float: left;
+            }
+            &-right {
+                float: right;
+            }
+        }
+    }
+    &-mh {
+        @include mix.bbetween(xs, md){
+            &-left {
+                float: left;
+            }
+            &-right {
+                float: right;
+            }
+        }
+    }
+    &-mv {
+        @include mix.bdown(xs){
+            &-left {
+                float: left;
+            }
+            &-right {
+                float: right;
+            }
+        }
+    }
+}
+.font-size {
+    &-xs {
+        font-size: 60%;
+    }
+
+    &-sm {
+        font-size: 80%;
+    }
+    &-n {
+        font-size: 100%;
+    }
+
+    &-l {
+        font-size: 125%;
+    }
+
+    &-xl {
+        font-size: 150%;
+    }
+
+    &-xxl {
+        font-size: 200%;
+    }
+
+    &-xxxl {
+        font-size: 300%;
+    }
+
+    &-xxxxl {
+        font-size: 400%;
+    }
+
+    &-xxxxxl {
+        font-size: 500%;
+    }
+    &-dt {
+        @include mix.bup(md){
+            &-xs {
+                font-size: 60%;
+            }
+        
+            &-sm {
+                font-size: 80%;
+            }
+            &-n {
+                font-size: 100%;
+            }
+        
+            &-l {
+                font-size: 125%;
+            }
+        
+            &-xl {
+                font-size: 150%;
+            }
+        
+            &-xxl {
+                font-size: 200%;
+            }
+        
+            &-xxxl {
+                font-size: 300%;
+            }
+        
+            &-xxxxl {
+                font-size: 400%;
+            }
+        
+            &-xxxxxl {
+                font-size: 500%;
+            }
+        }
+    }
+    &-ls {
+        @include mix.bup(ls){
+            &-xs {
+                font-size: 60%;
+            }
+        
+            &-sm {
+                font-size: 80%;
+            }
+            &-n {
+                font-size: 100%;
+            }
+        
+            &-l {
+                font-size: 125%;
+            }
+        
+            &-xl {
+                font-size: 150%;
+            }
+        
+            &-xxl {
+                font-size: 200%;
+            }
+        
+            &-xxxl {
+                font-size: 300%;
+            }
+        
+            &-xxxxl {
+                font-size: 400%;
+            }
+        
+            &-xxxxxl {
+                font-size: 500%;
+            }
+        }
+    }
+    &-mh {
+        @include mix.bbetween(xs, md){
+            &-xs {
+                font-size: 60%;
+            }
+        
+            &-sm {
+                font-size: 80%;
+            }
+            &-n {
+                font-size: 100%;
+            }
+        
+            &-l {
+                font-size: 125%;
+            }
+        
+            &-xl {
+                font-size: 150%;
+            }
+        
+            &-xxl {
+                font-size: 200%;
+            }
+        
+            &-xxxl {
+                font-size: 300%;
+            }
+        
+            &-xxxxl {
+                font-size: 400%;
+            }
+        
+            &-xxxxxl {
+                font-size: 500%;
+            }
+        }
+    }
+    &-mv {
+        @include mix.bdown(xs){
+            &-xs {
+                font-size: 60%;
+            }
+        
+            &-sm {
+                font-size: 80%;
+            }
+            &-n {
+                font-size: 100%;
+            }
+        
+            &-l {
+                font-size: 125%;
+            }
+        
+            &-xl {
+                font-size: 150%;
+            }
+        
+            &-xxl {
+                font-size: 200%;
+            }
+        
+            &-xxxl {
+                font-size: 300%;
+            }
+        
+            &-xxxxl {
+                font-size: 400%;
+            }
+        
+            &-xxxxxl {
+                font-size: 500%;
+            }
+        }
+    }
+}
+.font-weight {
+    &-100 {
+        font-weight: 100;
+    }
+    &-300 {
+        font-weight: 300;
+    }
+    &-400 {
+        font-weight: 400;
+    }
+    &-500 {
+        font-weight: 500;
+    }
+    &-600 {
+        font-weight: 600;
+    }
+    &-700 {
+        font-weight: 700;
+    }
+    &-900 {
+        font-weight: 900;
+    }
+}
+.line-height {
+    &-inherit {
+        line-height: inherit;
+    }
+    &-normal,
+    &-n {
+        line-height: normal;
+    }
+    &-60 {
+        line-height: 60%;
+    }
+    &-80 {
+        line-height: 80%;
+    }
+    &-100 {
+        line-height: 100%;
+    }
+    &-125 {
+        line-height: 125%;
+    }
+    &-150 {
+        line-height: 150%;
+    }
+    &-200 {
+        line-height: 200%;
+    }
+
+}
+.ls {
+    &-min {
+        letter-spacing: -.1em;
+    }
+    &-condenced {
+        letter-spacing: -.05em;
+    }
+    &-wide {
+        letter-spacing: .05em;
+    }
+    &-max {
+        letter-spacing: .1em;
+    }
+}
+.hidden {
+    display: none !important;
+    &-mobile {
+        @include mix.bdown(md) {
+            display: none !important;
+        }
+    }
+    &-desktop {
+        @include mix.bup(md) {
+            display: none !important;
+        }
+    }
+}
+.visibility{
+    &-on {
+        visibility: visible;
+    }
+    &-off {
+        visibility: hidden;
+    }
+}
+.overflow {
+    &-visible {
+        overflow: visible;
+    }
+    &-scroll {
+        overflow: scroll;
+    }
+    &-hidden {
+        overflow: hidden;
+    }
+}
+.m {
+    &-auto {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &l-auto {
+        margin-left: auto;
+    }
+    &r-auto {
+        margin-right: auto;
+    }
+    &-dt-auto {
+        @include mix.bup(md){
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    &l-dt-auto {
+        @include mix.bup(md){
+            margin-left: auto;
+        }
+    }
+    &r-dt-auto {
+        @include mix.bup(md){
+            margin-right: auto;
+        }
+    }
+    &-ls-auto {
+        @include mix.bup(ls){
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    &l-ls-auto {
+        @include mix.bup(ls){
+            margin-left: auto;
+        }
+    }
+    &r-ls-auto {
+        @include mix.bup(ls){
+            margin-right: auto;
+        }
+    }
+    &-mh-auto {
+        @include mix.bbetween(xs, md){
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    &l-mh-auto {
+        @include mix.bbetween(xs, md){
+            margin-left: auto;
+        }
+    }
+    &r-mh-auto {
+        @include mix.bbetween(xs, md){
+            margin-right: auto;
+        }
+    }
+
+    &-mv-auto {
+        @include mix.bdown(xs){
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    &l-mv-auto {
+        @include mix.bdown(xs){
+            margin-left: auto;
+        }
+    }
+    &r-mv-auto {
+        @include mix.bdown(xs){
+            margin-right: auto;
+        }
+    }
+
+}
+.no-bg {
+    background-image: none !important;
+}
+.underline {
+    text-decoration: underline;
+}
+.shadow {
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    &-small {
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    }
+    &-big {
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.25);
+    }
+}
+.pr {
+    position: relative;
+}
+.bold {
+    font-weight: 700;
+}
+.italic {
+    font-style: italic;
+}
+.media-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    iframe {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+    }
+}
+.object-fit {
+    &-cover {
+        object-fit: cover;
+        
+    }
+    &-contain {
+        object-fit: contain;
+    }
+}
+.clearfix {
+    &:after{
+        display: table;
+        content: "";
+        clear: both;
+    }
+}
+.white-space {
+    &-nowrap {
+        white-space: nowrap;
+    }
+    &-normal {
+        white-space: normal;
+    }
+    &-pre {
+        white-space: pre;
+    }
+}
+.word-break {
+    &-normal {
+        word-break: normal
+    }
+    &-all {
+        word-break: break-all;
+    }
+    &-word {
+        word-break: break-word;
+    }
+}
+.bfv {
+    &-hidden {
+        backface-visibility: hidden;
+    }
+    &-visible {
+        backface-visibility: visible;
+    }
+}
+.acc {
+    &-content {
+        display: none;
+    }
+    .btn-acc {
+        span {
+            &:first-child {
+                display: inline-block;
+            }
+            &:last-child {
+                display: none;
+            }
+        }
+    }
+    &-opened {
+        .acc-content {
+            display: block;
+        }
+        .btn-acc {
+            span {
+                &:first-child {
+                    display: none;
+                }
+                &:last-child {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}
+.tab {
+    &-titles {
+        margin-bottom: 0;
+        li {
+            list-style-type: none;
+            margin-left: 0;
+            a {
+                text-decoration: none;
+                padding: .5rem 1rem;
+                display: block;
+                border-width: 1px;
+                border-style: solid;
+                border-color: transparent;
+                // border: 1px solid transparent;
+                white-space: nowrap;
+                &:not(.active){
+                    background-color: inherit !important;
+                    color: inherit !important;
+                }
+                &.active {
+                    // box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+                }
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    &-info {
+        padding: 1rem;
+        div[data-item-tab]{
+            display: none;
+            &.active {
+                display: block;
+            }
+        }
+    }
+    &-horizontal {
+        .tab-titles {
+            display: flex;
+            // max-width: 100%;
+            overflow-x: auto;
+        }
+    }
+    &-vertical {
+        display: flex;
+        .tab-info {
+            flex-grow: 1;
+        }
+    }
+}
+.banner {
+    &-cover {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+    &-tile {
+        background-repeat: repeat;
+    }
+    &-fixed {
+        @include mix.bup(md){
+            background-attachment: fixed;
+        }
+    }
+}
+.opacity-panel {
+    position: relative;
+
+    &-bg {
+        position: absolute;
+        display: block;
+        content: "";
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+
+    &-content {
+        position: relative;
+        z-index: 5;
+    }
+
+}
+@for $i from 0 through 10 {
+    $m: $i * 0.1;
+    .op-#{$i} {
+        opacity: $m;
+    }
+}
+.img {
+    &-cover {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+    &-contain {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+    }
+}

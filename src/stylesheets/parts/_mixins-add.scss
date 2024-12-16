@@ -1,0 +1,292 @@
+@use "../core/mixins" as mix;
+
+@for $i from 0 through 10 {
+    .m-#{$i}{
+        margin: #{$i}rem;
+    }
+    .mt-#{$i}{
+        margin-top: #{$i}rem;
+    }
+    .mb-#{$i}{
+        margin-bottom: #{$i}rem;
+    }
+    .ml-#{$i}{
+        margin-left: #{$i}rem;
+    }
+    .mr-#{$i}{
+        margin-right: #{$i}rem;
+    }
+    .ms-#{$i}{
+        margin-left: #{$i}rem;
+        margin-right: #{$i}rem;
+    }
+    .mv-#{$i}{
+        margin-top: #{$i}rem;
+        margin-bottom: #{$i}rem;
+    }
+    
+    .pt-#{$i}{
+        padding-top: #{$i}rem;
+    }
+    .pb-#{$i}{
+        padding-bottom: #{$i}rem;
+    }
+    .pl-#{$i}{
+        padding-left: #{$i}rem;
+    }
+    .pr-#{$i}{
+        padding-right: #{$i}rem;
+    }
+    .ps-#{$i}{
+        padding-left: #{$i}rem;
+        padding-right: #{$i}rem;
+    }
+    .pv-#{$i}{
+        padding-top: #{$i}rem;
+        padding-bottom: #{$i}rem;
+    }
+    .p-#{$i}{
+        padding: #{$i}rem;
+    }
+    .row.gap-#{$i}{
+        gap: #{$i}rem;
+    }
+    .column-count-#{$i}{
+        column-count: $i;
+    }
+}
+@for $i from 0 through 10 {
+    @include mix.bbetween(xs, md){
+        .m-mh-#{$i}{
+            margin: #{$i}rem;
+        }
+        .mt-mh-#{$i}{
+            margin-top: #{$i}rem;
+        }
+        .mb-mh-#{$i}{
+            margin-bottom: #{$i}rem;
+        }
+        .ml-mh-#{$i}{
+            margin-left: #{$i}rem;
+        }
+        .mr-mh-#{$i}{
+            margin-right: #{$i}rem;
+        }
+        .ms-mh-#{$i}{
+            margin-left: #{$i}rem;
+            margin-right: #{$i}rem;
+        }
+        .mv-mh-#{$i}{
+            margin-top: #{$i}rem;
+            margin-bottom: #{$i}rem;
+        }
+        
+        .pt-mh-#{$i}{
+            padding-top: #{$i}rem;
+        }
+        .pb-mh-#{$i}{
+            padding-bottom: #{$i}rem;
+        }
+        .pl-mh-#{$i}{
+            padding-left: #{$i}rem;
+        }
+        .pr-mh-#{$i}{
+            padding-right: #{$i}rem;
+        }
+        .ps-mh-#{$i}{
+            padding-left: #{$i}rem;
+            padding-right: #{$i}rem;
+        }
+        .pv-mh-#{$i}{
+            padding-top: #{$i}rem;
+            padding-bottom: #{$i}rem;
+        }
+        .p-mh-#{$i}{
+            padding: #{$i}rem;
+        }
+        .row.gap-mh-#{$i}{
+            gap: #{$i}rem;
+        }
+        .column-count-mh-#{$i}{
+            column-count: $i;
+        }
+    }
+    @include mix.bdown(xs){
+        .m-mv-#{$i}{
+            margin: #{$i}rem;
+        }
+        .mt-mv-#{$i}{
+            margin-top: #{$i}rem;
+        }
+        .mb-mv-#{$i}{
+            margin-bottom: #{$i}rem;
+        }
+        .ml-mv-#{$i}{
+            margin-left: #{$i}rem;
+        }
+        .mr-mv-#{$i}{
+            margin-right: #{$i}rem;
+        }
+        .ms-mv-#{$i}{
+            margin-left: #{$i}rem;
+            margin-right: #{$i}rem;
+        }
+        .mv-mv-#{$i}{
+            margin-top: #{$i}rem;
+            margin-bottom: #{$i}rem;
+        }
+        
+        .pt-mv-#{$i}{
+            padding-top: #{$i}rem;
+        }
+        .pb-mv-#{$i}{
+            padding-bottom: #{$i}rem;
+        }
+        .pl-mv-#{$i}{
+            padding-left: #{$i}rem;
+        }
+        .pr-mv-#{$i}{
+            padding-right: #{$i}rem;
+        }
+        .ps-mv-#{$i}{
+            padding-left: #{$i}rem;
+            padding-right: #{$i}rem;
+        }
+        .pv-mv-#{$i}{
+            padding-top: #{$i}rem;
+            padding-bottom: #{$i}rem;
+        }
+        .p-mv-#{$i}{
+            padding: #{$i}rem;
+        }
+        .row.gap-mv-#{$i}{
+            gap: #{$i}rem;
+        }
+        .column-count-mv-#{$i}{
+            column-count: $i;
+        }
+    }
+    @include mix.bup(md){
+        .rm-#{$i},
+        .m-dt-#{$i}{
+            margin: #{$i}rem;
+        }
+        .rml-#{$i},
+        .ml-dt-#{$i}{
+            margin-left: #{$i}rem;
+        }
+        .rmr-#{$i},
+        .mr-dt-#{$i}{
+            margin-right: #{$i}rem;
+        }
+        .rmt-#{$i},
+        .mt-dt-#{$i}{
+            margin-top: #{$i}rem;
+        }
+        .rmb-#{$i},
+        .mb-dt-#{$i}{
+            margin-bottom: #{$i}rem;
+        }
+        .rmv-#{$i},
+        .mv-dt-#{$i}{
+            margin-top: #{$i}rem;
+            margin-bottom: #{$i}rem;
+        }
+        .rms-#{$i},
+        .ms-dt-#{$i}{
+            margin-left: #{$i}rem;
+            margin-right: #{$i}rem;
+        }
+        .rp-#{$i},
+        .p-dt-#{$i}{
+            padding: #{$i}rem;
+        }
+        .rpl-#{$i},
+        .pl-dt-#{$i}{
+            padding-left: #{$i}rem;
+        }
+        .rpr-#{$i},
+        .pr-dt-#{$i}{
+            padding-right: #{$i}rem;
+        }
+        .rpt-#{$i},
+        .pt-dt-#{$i}{
+            padding-top: #{$i}rem;
+        }
+        .rpb-#{$i},
+        .pb-dt-#{$i}{
+            padding-bottom: #{$i}rem;
+        }
+        .rpv-#{$i},
+        .pv-dt-#{$i}{
+            padding-top: #{$i}rem;
+            padding-bottom: #{$i}rem;
+        }
+        .rps-#{$i},
+        .ps-dt-#{$i}{
+            padding-left: #{$i}rem;
+            padding-right: #{$i}rem;
+        }
+        .rcolumn-count-#{$i},
+        .column-count-dt-#{$i}{
+            column-count: $i;
+        }
+    }
+    @include mix.bup(ls){
+        .m-ls-#{$i}{
+            margin: #{$i}rem;
+        }
+        .mt-ls-#{$i}{
+            margin-top: #{$i}rem;
+        }
+        .mb-ls-#{$i}{
+            margin-bottom: #{$i}rem;
+        }
+        .ml-ls-#{$i}{
+            margin-left: #{$i}rem;
+        }
+        .mr-ls-#{$i}{
+            margin-right: #{$i}rem;
+        }
+        .ms-ls-#{$i}{
+            margin-left: #{$i}rem;
+            margin-right: #{$i}rem;
+        }
+        .mv-ls-#{$i}{
+            margin-top: #{$i}rem;
+            margin-bottom: #{$i}rem;
+        }
+        
+        .pt-ls-#{$i}{
+            padding-top: #{$i}rem;
+        }
+        .pb-ls-#{$i}{
+            padding-bottom: #{$i}rem;
+        }
+        .pl-ls-#{$i}{
+            padding-left: #{$i}rem;
+        }
+        .pr-ls-#{$i}{
+            padding-right: #{$i}rem;
+        }
+        .ps-ls-#{$i}{
+            padding-left: #{$i}rem;
+            padding-right: #{$i}rem;
+        }
+        .pv-ls-#{$i}{
+            padding-top: #{$i}rem;
+            padding-bottom: #{$i}rem;
+        }
+        .p-ls-#{$i}{
+            padding: #{$i}rem;
+        }
+        .row.gap-ls-#{$i}{
+            gap: #{$i}rem;
+        }
+        .column-count-ls-#{$i}{
+            column-count: $i;
+        }
+    }
+}
+
+

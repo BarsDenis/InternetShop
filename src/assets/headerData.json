@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "navItem": "Home",
+    "navLink": "/"
+  },
+  {
+    "id": 2,
+    "navItem": "Beauty",
+    "navLink": "beauty"
+  },
+  {
+    "id": 3,
+    "navItem": "Fragrances",
+    "navLink": "fragrances"
+  },
+  {
+    "id": 4,
+    "navItem": "Groceries",
+    "navLink": "groceries"
+  },
+  {
+    "id": 5,
+    "navItem": "Furniture",
+    "navLink": "furniture"
+  }
+]

@@ -1,0 +1,1066 @@
+@use "../core/mixins" as mix;
+@use "../core/variables" as var;
+
+#root {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.text {
+    &-yellow {
+        color: var.$yellow;
+    }
+
+    &-purple {
+        color: var.$purple;
+    }
+
+    &-white {
+        color: var.$white;
+    }
+
+    &-beige {
+        color: var.$beige;
+    }
+
+    &-gray {
+        color: var.$gray;
+    }
+
+    &-black {
+        color: var.$black;
+    }
+
+    &-black-alt {
+        color: var.$blackalt;
+    }
+
+    &-base {
+        color: var.$base;
+    }
+
+    &-darkgray {
+        color: var.$darkgray;
+    }
+
+    &-orange {
+        color: var.$orange;
+    }
+
+    &-scarlet {
+        color: var.$scarlet;
+    }
+
+    &-red {
+        color: var.$red;
+    }
+
+    &-pink {
+        color: var.$pink;
+    }
+
+    &-blue {
+        color: var.$blue;
+    }
+
+    &-green {
+        color: var.$green;
+    }
+}
+
+.bg {
+    &-yellow {
+        background-color: var.$yellow;
+    }
+
+    &-purple {
+        background-color: var.$purple;
+    }
+
+    &-white {
+        background-color: var.$white;
+    }
+
+    &-beige {
+        background-color: var.$beige;
+    }
+
+    &-gray {
+        background-color: var.$gray;
+    }
+
+    &-darkgray {
+        background-color: var.$darkgray;
+    }
+
+    &-black {
+        background-color: var.$black;
+    }
+
+    &-black-alt {
+        background-color: var.$blackalt;
+    }
+
+    &-base {
+        background-color: var.$base;
+    }
+
+    &-orange {
+        background-color: var.$orange;
+    }
+
+    &-scarlet {
+        background-color: var.$scarlet;
+    }
+
+    &-red {
+        background-color: var.$red;
+    }
+
+    &-pink {
+        background-color: var.$pink;
+    }
+
+    &-blue {
+        background-color: var.$blue;
+    }
+
+    &-green {
+        background-color: var.$green;
+    }
+}
+
+body.loaded {
+    a,
+    button {
+        transition: all 0.4s ease-in-out;
+    }
+}
+
+a,
+button {
+    &:not(.disabled):not(:disabled) {
+        cursor: pointer;
+    }
+
+    &.disabled,
+    &:disabled {
+        cursor: default;
+        pointer-events: none;
+    }
+
+    transition: none;
+}
+
+a {
+    text-decoration: underline;
+
+    &:not(.btn) {
+        &:hover {
+            opacity: 0.75;
+        }
+    }
+}
+
+html {
+    font-size: 20px;
+
+    @include mix.bdown(md) {
+        font-size: 16px;
+    }
+}
+
+body {
+    line-height: 1.5;
+    color: var.$base;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1-style,
+.h2-style,
+.h3-style,
+.h4-style,
+.h5-style,
+.h6-style {
+    line-height: normal;
+}
+
+h1,
+.h1-style {
+    font-size: 2em;
+}
+
+h2,
+.h2-style {
+    font-size: 1.5em;
+}
+
+h3,
+.h3-style {
+    font-size: 1.3em;
+}
+
+h4,
+.h4-style {
+    font-size: 1.2em;
+}
+
+h5,
+.h5-style {
+    font-size: 1.1em;
+}
+
+h6,
+.h6-style {
+    font-size: 1em;
+}
+
+p,
+ul,
+ol {
+    margin-bottom: 1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 0.6em;
+}
+
+blockquote {
+    border-left: mix.rem(10) solid currentColor;
+    padding: 2rem;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+    font-style: italic;
+
+    & > *:last-child {
+        margin-bottom: 0;
+    }
+}
+
+section {
+    ul {
+        li {
+            list-style-type: disc;
+            margin-left: 1em;
+        }
+    }
+
+    ol {
+        li {
+            margin-left: 1em;
+        }
+    }
+}
+ul {
+    &.list-style-none {
+        li {
+            list-style-type: none !important;
+        }
+    }
+    &.list-style-dots {
+        li {
+            list-style-type: disc !important;
+        }
+    }
+    &.list-style-triangle {
+        li {
+            list-style-type: disclosure-closed !important;
+        }
+    }
+}
+
+header a,
+footer a {
+    display: inline-block;
+}
+
+.design-block {
+    a:not(.default) {
+        text-decoration: none;
+
+        &:not(.btn) {
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    ul:not(.default),
+    ol:not(.default) {
+        li {
+            list-style-type: none;
+        }
+    }
+}
+
+img {
+    &.img-fw {
+        width: 100%;
+    }
+}
+
+a {
+    obj {
+        pointer-events: none;
+    }
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 400;
+    border: 1px solid var.$black;
+    color: var.$black;
+    background-color: transparent;
+    display: inline-block;
+
+    &.active,
+    &:hover {
+        background-color: var.$black;
+        color: var.$white;
+    }
+    @include mix.bdown(md) {
+        font-size: 1rem;
+    }
+    @include mix.bup(md) {
+        min-width: 185px;
+    }
+
+    &.bold {
+        font-weight: 700;
+    }
+
+    &-small {
+        // @include fluid-font(12px);
+        font-size: 0.7rem;
+        @include mix.bdown(md) {
+            font-size: 0.9rem;
+        }
+        @include mix.bup(md) {
+            min-width: 125px;
+        }
+    }
+
+    &-large {
+        // @include fluid-font(20px);
+        font-size: 1rem;
+        @include mix.bdown(md) {
+            font-size: 1.2rem;
+        }
+        @include mix.bup(md) {
+            min-width: 220px;
+        }
+    }
+
+    &-inverted {
+        background-color: var.$black;
+        color: #fff;
+
+        &:hover {
+            background-color: var.$white;
+            color: var.$black;
+        }
+    }
+
+    &-white {
+        background-color: var.$white;
+
+        &:hover {
+            background-color: var.$black;
+            color: var.$white;
+        }
+        &-dimm {
+            background-color: var.$white;
+            color: var.$black;
+            border: 1px solid var.$white;
+
+            &:hover {
+                background-color: var.$white;
+                color: var.$black;
+                filter: brightness(90%);
+            }
+        }
+    }
+
+    &-gray {
+        border: 1px solid var.$gray;
+        color: var.$gray;
+
+        &:hover {
+            background-color: var.$gray;
+            color: var.$black;
+        }
+
+        &-inverted {
+            border: 1px solid var.$gray;
+            background-color: var.$gray;
+            color: var.$black;
+
+            &:hover {
+                border: 1px solid var.$gray;
+
+                // background-color: $black;
+                background-color: transparent;
+                color: var.$gray;
+            }
+        }
+        &-dimm {
+            background-color: var.$gray;
+            color: var.$black;
+            border: 1px solid var.$gray;
+
+            &:hover {
+                background-color: var.$gray;
+                color: var.$black;
+                filter: brightness(90%);
+            }
+        }
+    }
+
+    &-darkgray {
+        border: 1px solid var.$darkgray;
+        color: var.$darkgray;
+
+        &:hover {
+            background-color: var.$darkgray;
+            color: var.$white;
+        }
+
+        &-inverted {
+            border: 1px solid var.$darkgray;
+            background-color: var.$darkgray;
+            color: var.$white;
+
+            &:hover {
+                border: 1px solid var.$darkgray;
+                background-color: transparent;
+                color: var.$darkgray;
+            }
+        }
+        &-dimm {
+            background-color: var.$darkgray;
+            color: var.$white;
+            border: 1px solid var.$darkgray;
+
+            &:hover {
+                background-color: var.$darkgray;
+                color: var.$white;
+                filter: brightness(90%);
+            }
+        }
+    }
+
+    &-yellow {
+        border: 1px solid var.$yellow;
+        color: var.$yellow;
+
+        &:hover {
+            background-color: var.$yellow;
+            color: var.$base;
+        }
+
+        &-inverted {
+            border: 1px solid var.$yellow;
+            background-color: var.$yellow;
+            color: var.$base;
+
+            &:hover {
+                border: 1px solid var.$yellow;
+
+                // background-color: $black;
+                background-color: transparent;
+                color: var.$yellow;
+            }
+        }
+        &-dimm {
+            background-color: var.$yellow;
+            color: var.$base;
+            border: 1px solid var.$yellow;
+
+            &:hover {
+                background-color: var.$yellow;
+                color: var.$base;
+                filter: brightness(90%);
+            }
+        }
+    }
+
+    &-purple {
+        border: 1px solid var.$purple;
+        color: var.$purple;
+
+        &:hover {
+            background-color: var.$purple;
+            color: var.$white;
+        }
+
+        &-inverted {
+            border: 1px solid var.$white;
+            background-color: var.$purple;
+            color: var.$white;
+
+            &:hover {
+                border: 1px solid var.$purple;
+
+                // background-color: $white;
+                background-color: transparent;
+                color: var.$purple;
+            }
+        }
+        &-dimm {
+            background-color: var.$purple;
+            color: var.$white;
+            border: 1px solid var.$purple;
+
+            &:hover {
+                background-color: var.$purple;
+                color: var.$white;
+                filter: brightness(90%);
+            }
+        }
+    }
+
+    &-pink {
+        border: 1px solid var.$pink;
+        color: var.$pink;
+
+        &:hover {
+            background-color: var.$pink;
+            color: var.$base;
+        }
+
+        &-inverted {
+            // border: 1px solid $white;
+            border: 1px solid var.$pink;
+            background-color: var.$pink;
+            color: var.$base;
+
+            &:hover {
+                border: 1px solid var.$pink;
+
+                // background-color: $white;
+                background-color: transparent;
+                color: var.$pink;
+            }
+        }
+        &-dimm {
+            background-color: var.$pink;
+            color: var.$base;
+            border: 1px solid var.$pink;
+
+            &:hover {
+                background-color: var.$pink;
+                color: var.$base;
+                filter: brightness(90%);
+            }
+        }
+    }
+
+    &-blue {
+        border: 1px solid var.$blue;
+        color: var.$blue;
+
+        &:hover {
+            background-color: var.$blue;
+            color: var.$base;
+        }
+
+        &-inverted {
+            // border: 1px solid $white;
+            border: 1px solid var.$blue;
+            background-color: var.$blue;
+            color: var.$base;
+
+            &:hover {
+                border: 1px solid var.$blue;
+
+                // background-color: $white;
+                background-color: transparent;
+                color: var.$blue;
+            }
+        }
+        &-dimm {
+            background-color: var.$blue;
+            color: var.$base;
+            border: 1px solid var.$blue;
+
+            &:hover {
+                background-color: var.$blue;
+                color: var.$base;
+                filter: brightness(90%);
+            }
+        }
+    }
+
+    &-green {
+        border: 1px solid var.$green;
+        color: var.$green;
+
+        &:hover {
+            background-color: var.$green;
+            color: var.$base;
+        }
+
+        &-inverted {
+            // border: 1px solid $white;
+            border: 1px solid var.$green;
+            background-color: var.$green;
+            color: var.$base;
+
+            &:hover {
+                border: 1px solid var.$green;
+
+                // background-color: $white;
+                background-color: transparent;
+                color: var.$green;
+            }
+        }
+        &-dimm {
+            background-color: var.$green;
+            color: var.$base;
+            border: 1px solid var.$green;
+
+            &:hover {
+                background-color: var.$green;
+                color: var.$base;
+                filter: brightness(90%);
+            }
+        }
+    }
+
+    &-scarlet {
+        border: 1px solid var.$scarlet;
+        color: var.$scarlet;
+
+        &:hover {
+            background-color: var.$scarlet;
+            color: var.$white;
+        }
+
+        &-inverted {
+            background-color: var.$scarlet;
+            border: 1px solid var.$scarlet;
+            color: var.$white;
+
+            &:hover {
+                border: 1px solid var.$scarlet;
+
+                // background-color: $white;
+                background-color: transparent;
+                color: var.$scarlet;
+            }
+        }
+        &-dimm {
+            background-color: var.$scarlet;
+            color: var.$white;
+            border: 1px solid var.$scarlet;
+
+            &:hover {
+                background-color: var.$scarlet;
+                color: var.$white;
+                filter: brightness(90%);
+            }
+        }
+    }
+
+    &-orange {
+        border: 1px solid var.$orange;
+        color: var.$orange;
+
+        &:hover {
+            background-color: var.$orange;
+            color: var.$white;
+        }
+
+        &-inverted {
+            background-color: var.$orange;
+            color: var.$white;
+            border: 1px solid var.$orange;
+
+            &:hover {
+                border: 1px solid var.$orange;
+
+                // background-color: $white;
+                background-color: transparent;
+                color: var.$orange;
+            }
+        }
+        &-dimm {
+            background-color: var.$orange;
+            color: var.$white;
+            border: 1px solid var.$orange;
+
+            &:hover {
+                background-color: var.$orange;
+                color: var.$white;
+                filter: brightness(90%);
+            }
+        }
+    }
+
+    &-red {
+        border: 1px solid var.$red;
+        color: var.$red;
+
+        &:hover {
+            background-color: var.$red;
+            color: var.$white;
+        }
+
+        &-inverted {
+            background-color: var.$red;
+            border: 1px solid var.$red;
+            color: var.$white;
+
+            &:hover {
+                border: 1px solid var.$red;
+
+                // background-color: $white;
+                background-color: transparent;
+                color: var.$red;
+            }
+        }
+        &-dimm {
+            background-color: var.$red;
+            color: var.$white;
+            border: 1px solid var.$red;
+
+            &:hover {
+                background-color: var.$red;
+                color: var.$white;
+                filter: brightness(90%);
+            }
+        }
+    }
+
+    &-rounded {
+        border-radius: 1rem;
+    }
+
+    &[class^="btn-animated"],
+    &[class*=" btn-animated"] {
+        border: none !important;
+        position: relative;
+        overflow: hidden;
+
+        span {
+            z-index: 5;
+            position: relative;
+        }
+
+        &:hover {
+            &:before {
+                right: -50%;
+                top: -50%;
+            }
+        }
+
+        // overflow: hidden;
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            z-index: 1;
+            border-radius: 50%;
+            top: -5px;
+            transition: all 0.7s;
+            width: 200%;
+            height: 300%;
+            right: 100%;
+        }
+
+        &[class*="-from-white"] {
+            background-color: var.$white;
+            color: var.$black;
+        }
+
+        &[class*="-from-black"] {
+            background-color: var.$black;
+            color: var.$white;
+        }
+
+        &[class*="-from-gray"] {
+            background-color: var.$gray;
+            color: var.$black;
+        }
+
+        &[class*="-from-darkgray"] {
+            background-color: var.$darkgray;
+            color: var.$white;
+        }
+
+        &[class*="-from-blue"] {
+            background-color: var.$blue;
+            color: var.$black;
+        }
+
+        &[class*="-from-green"] {
+            background-color: var.$green;
+            color: var.$black;
+        }
+
+        &[class*="-from-pink"] {
+            background-color: var.$pink;
+            color: var.$black;
+        }
+
+        &[class*="-from-yellow"] {
+            background-color: var.$yellow;
+            color: var.$white;
+        }
+
+        &[class*="-from-red"] {
+            background-color: var.$red;
+            color: var.$white;
+        }
+
+        &[class*="-from-orange"] {
+            background-color: var.$orange;
+            color: var.$white;
+        }
+
+        &[class*="-from-scarlet"] {
+            background-color: var.$scarlet;
+            color: var.$white;
+        }
+
+        &[class*="-from-purple"] {
+            background-color: var.$purple;
+            color: var.$white;
+        }
+
+        &[class*="-to-pink"] {
+            &:hover {
+                color: var.$black;
+            }
+
+            &:before {
+                background-color: var.$pink;
+            }
+        }
+
+        &[class*="-to-blue"] {
+            &:hover {
+                color: var.$black;
+            }
+
+            &:before {
+                background-color: var.$blue;
+            }
+        }
+
+        &[class*="-to-green"] {
+            &:hover {
+                color: var.$black;
+            }
+
+            &:before {
+                background-color: var.$green;
+            }
+        }
+
+        &[class*="-to-yellow"] {
+            &:hover {
+                color: var.$black;
+            }
+
+            &:before {
+                background-color: var.$yellow;
+            }
+        }
+
+        &[class*="-to-red"] {
+            &:hover {
+                color: var.$white;
+            }
+
+            &:before {
+                background-color: var.$red;
+            }
+        }
+
+        &[class*="-to-purple"] {
+            &:hover {
+                color: var.$white;
+            }
+
+            &:before {
+                background-color: var.$purple;
+            }
+        }
+
+        &[class*="-to-scarlet"] {
+            &:hover {
+                color: var.$white;
+            }
+
+            &:before {
+                background-color: var.$scarlet;
+            }
+        }
+
+        &[class*="-to-orange"] {
+            &:hover {
+                color: var.$white;
+            }
+
+            &:before {
+                background-color: var.$orange;
+            }
+        }
+
+        &[class*="-to-white"] {
+            &:hover {
+                color: var.$black;
+            }
+
+            &:before {
+                background-color: var.$white;
+            }
+        }
+
+        &[class*="-to-black"] {
+            &:hover {
+                color: var.$white;
+            }
+
+            &:before {
+                background-color: var.$black;
+            }
+        }
+
+        &[class*="-to-gray"] {
+            &:hover {
+                color: var.$black;
+            }
+
+            &:before {
+                background-color: var.$gray;
+            }
+        }
+
+        &[class*="-to-darkgray"] {
+            &:hover {
+                color: var.$white;
+            }
+
+            &:before {
+                background-color: var.$gray;
+            }
+        }
+    }
+}
+
+.table {
+    &-container {
+        overflow-x: auto;
+    }
+
+    &-fw {
+        width: 100%;
+    }
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: inherit;
+
+    td,
+    th {
+        vertical-align: top;
+        border: 1px solid var.$gray;
+        padding: 5px;
+    }
+
+    th {
+        font-weight: 700;
+        text-align: center;
+    }
+
+    &.text {
+        &-left {
+            td,
+            th {
+                text-align: left;
+            }
+        }
+
+        &-right {
+            td,
+            th {
+                text-align: right;
+            }
+        }
+
+        &-center {
+            td,
+            th {
+                text-align: center;
+            }
+        }
+    }
+
+    &.table-inverted {
+        color: var.$beige;
+    }
+
+    &.table-valign {
+        &-top {
+            td,
+            th {
+                vertical-align: top;
+            }
+        }
+
+        &-middle {
+            td,
+            th {
+                vertical-align: middle;
+            }
+        }
+
+        &-bottom {
+            td,
+            th {
+                vertical-align: bottom;
+            }
+        }
+    }
+}
+
+xmp {
+    font-size: 0.7rem;
+    font-family: monospace;
+}
+
+.code-container {
+    overflow-x: auto;
+    // background-color: $gray;
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}

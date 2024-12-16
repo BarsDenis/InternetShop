@@ -1,0 +1,129 @@
+@use "../core/mixins" as mix;
+@use "../core/variables" as var;
+
+body {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    main {
+        flex: 1 1 auto;
+    }
+    &.menu-opened {
+        main {
+            display: none;
+        }
+    }
+}
+.qb-header {
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
+    position: relative;
+    a {
+        text-decoration: none;
+        &:hover, &.active {
+            color: var.$blue;
+        }
+    }
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    &-logo-block {
+        a {
+            display: block;
+            padding: 15px 0;
+            img {
+                height: 50px;
+            }
+        }
+    }
+    nav {
+        font-size: 14px;
+        z-index: 10;
+        ul {
+            display: flex;
+            margin: 0;
+            a {
+                padding: .5rem;
+            }
+        }
+        @include mix.bdown(md){
+            flex: 1 1 100%;
+            display: none;
+            margin-left: calc(-15px - 1%);
+            margin-right: calc(-15px - 1%);
+            width: 100%;
+            ul {
+                min-height: calc(100vh - 80px);
+                flex-direction: column;
+                justify-content: space-evenly;
+                a {
+                    width: 100%;
+                    font-size: 18px;
+                    font-weight: 700;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    &-hamburger {
+        backface-visibility: hidden;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        padding: 0;
+        &:focus {
+            outline: none;
+        }
+        @include mix.bup(md){
+            display: none;
+        }
+        svg {
+            height: 52px;
+            width: auto;
+        }
+        .line {
+            fill: none;
+            stroke: black;
+            stroke-width: 6;
+            transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+            stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+            &1 {
+                stroke-dasharray: 60 207;
+                stroke-width: 6;
+            }
+            &2 {
+                stroke-dasharray: 60 60;
+                stroke-width: 6;
+            }
+            &3 {
+                stroke-dasharray: 60 207;
+                stroke-width: 6;
+            }
+        }
+        &.opened {
+            .line {
+                &1 {
+                    stroke-dasharray: 90 207;
+                    stroke-dashoffset: -134;
+                    stroke-width: 6;
+
+                }
+                &2 {
+                    stroke-dasharray: 1 60;
+                    stroke-dashoffset: -30;
+                    stroke-width: 6;
+                    
+                }
+                &3 {
+                    stroke-dasharray: 90 207;
+                    stroke-dashoffset: -134;
+                    stroke-width: 6;
+                }
+            }
+        }
+    }
+}

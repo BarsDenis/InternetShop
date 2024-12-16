@@ -1,0 +1,169 @@
+@use "../core/mixins" as mix;
+@use "../core/variables" as var;
+
+.related {
+    &-articles {
+        background-color: #FAFAFA;
+        a {
+            text-decoration: none;
+        }
+        &-list {
+            display: flex;
+            flex-wrap: wrap;
+            li {
+                list-style-type: none;
+                margin-right: 0;
+                margin-left: 0;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+                display: flex;
+                h4 {
+                    font-weight: 700;
+                    font-family: inherit;
+                    @include mix.fluid-font(18px);
+                    @include mix.rlh(20px);
+                }
+                p {
+                    @include mix.fluid-font(15px);
+                }
+            }
+        }
+        &-title {
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(230, 230, 230, 1);
+            font-weight: 700;
+            color: var.$base;
+        }
+        &-img {
+            flex: 0 0 auto;
+            img {
+                width: 70px;
+                height: 70px;
+                object-fit: cover;
+            }
+        }
+        &-desc {
+            margin-right: 1rem;
+        }
+        @include mix.bup(nm){
+            &-list {
+                li {
+                    margin-right: 5%;
+                    flex: 0 0 20%;
+                    &:nth-child(4n){
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+        @include mix.bbetween(md, nm){
+            &-list {
+                li {
+                    margin-right: 5%;
+                    flex: 1 0 28%;
+                    &:nth-child(3n){
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+        @include mix.bdown(md){
+            &-list {
+                li {
+                    justify-content: space-between;
+                    flex: 1 0 100%;
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}
+.tagline {
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        li {
+            list-style-type: none;
+            margin-left: 0;
+            margin-right: .5rem;
+            a {
+                background-color: #f2f2f2;
+                padding: .25rem .5rem;
+                color: #757575;
+                font-size: 15px;
+                text-decoration: none;
+            }
+
+        }
+    }
+    @include mix.bdown(md){
+        ul {
+            flex-direction: column;
+            li {
+                margin-right: 0;
+                margin-bottom: .5rem;
+                a {
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+.articles {
+    &-hub {
+        .row {
+            flex-wrap: wrap;
+            @include mix.bup(md){
+                .col {
+                    flex: 0 0 23%;
+                    margin: 0 1% 2%;
+                    max-width: 23%;
+                }
+            }
+            @include mix.bbetween(xs, md){
+                display: flex;
+                .col {
+                    flex: 0 0 48%;
+                    margin: 0 1% 2%;
+                    max-width: 48%;
+                }
+            }
+            @include mix.bdown(md){
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+        .col {
+            position: relative;
+            padding-bottom: calc(3rem + 15px);
+            padding-top: 15px;
+            border: 2px solid #f7f7f7;
+            box-shadow: 0 0 4px rgba(0, 0, 0, .16);
+            .btn {
+                position: absolute;
+                bottom: 15px;
+                left: 15px;
+            }
+        }
+        img {
+            display: block;
+            margin-bottom: 1rem;
+        }
+        h4 {
+            @include mix.fluid-font(30px);
+        }
+        .excerpt {
+            font-size: .8rem;
+        }
+    }
+}
+#canvasDisplay {
+    position: relative;
+    input[type="range"] {
+        left: 50% !important;
+        top: 10px !important;
+        transform: translateX(-50%);
+    }
+}
+

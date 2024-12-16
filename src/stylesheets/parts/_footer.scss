@@ -1,0 +1,59 @@
+@use "../core/mixins" as mix;
+
+.qb-footer {
+    color: #fff;
+    padding: 3rem 0;
+    a {
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    &-top,
+    &-bottom {
+        padding-top: 2rem; 
+        padding-bottom: 2rem;
+        @include mix.bup(md){
+            display: flex;
+        }
+    }
+    &-top {
+        h4 {
+            font-weight: 700;
+        }
+        h4 + p {
+            color: #aaa;
+        }
+        @include mix.fluid-font(16px);
+    }
+    &-bottom {
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid #aaa;
+        ul {
+            display: flex;
+            justify-content: flex-end;
+            @include mix.fluid-font(18px);
+
+            li {
+                margin-right: 2rem;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+        @include mix.bup(md){
+            h4 {
+                margin-bottom: 0;
+            }
+        }
+        @include mix.bdown(md){
+            ul {
+                flex-direction: column;
+                li {
+                    margin-bottom: .5rem;
+                }
+            }
+        }
+    }
+}

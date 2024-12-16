@@ -1,0 +1,330 @@
+@use "sass:list";
+@use "sass:map";
+@use "variables" as var;
+@use 'sass:math';
+
+@mixin bdown($bp, $bps:var.$breakpoints) {
+    @media screen and (max-width: (map.get($bps, $bp) - 1px)) {
+        @content;
+    }
+}
+@mixin bup($bp, $bps:var.$breakpoints) {
+    @media screen and (min-width: map.get($bps, $bp)) {
+        @content;
+    }
+}
+
+@mixin bonly($bp, $bps:var.$breakpoints) {
+    $lst-bps: map.keys($bps);
+    $idx: list.index($lst-bps, $bp);
+    @if( ($idx > 1) and ($idx < list.length($lst-bps)) ){
+        @media screen and (min-width: map.get($bps, list.nth($lst-bps, ($idx + 1)))) and (max-width: (map.get($bps, $bp) - 1px)) {
+            @content;
+        }
+    }
+    @else {
+        @if ($idx == 1) {
+            @media screen and (min-width: map.get($bps, $bp)) {
+                @content;
+            }
+        }
+        @else {
+            @media screen and (max-width: (map.get($bps, $bp) - 1px)) {
+                @content;
+            }
+        }
+    }
+}
+
+@mixin bbetween($bp1, $bp2, $bps:var.$breakpoints) {
+    $lst-bps: map.keys($bps);
+    $idx: list.index($lst-bps, $bp1);
+    $start: map.get($bps, $bp1);
+    $end: map.get($bps, $bp2) - 1px;
+    @if ($end < $start) {
+        $start: $start + $end;
+        $end: $start - $end;
+        $start: $start - $end;
+    }
+    @media screen and (min-width: $start) and (max-width: $end) {
+        @content;
+    }
+}
+// @mixin clear-link {
+//     &:link,
+//     &:visited ,
+//     &:hover ,
+//     &:active {
+//         text-decoration: none;
+//     }
+// }
+@mixin transition {
+    transition: all .3s ease-in-out;
+}
+@mixin resp-media($name, $color, $color-hover) {
+    .div-#{$name} {
+        a {
+            color: #{$color};
+            &:focus, &:hover {
+                color: #{$color-hover};
+            }
+        }
+    }
+}
+@mixin animations($value) {
+    -webkit-animation: $value;
+    -moz-animation: $value;
+    -o-animation: $value;
+    animation: $value;
+}
+@mixin transform($transforms) {
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+    transform: $transforms;
+}
+@mixin block-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+@mixin bcw ($value) {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $value;
+}
+@mixin rlh ($value){
+    @include bup(md){
+        line-height: $value;
+    }
+    @include bdown(md){
+        line-height: inherit;
+    }
+}
+@mixin font-count($mins, $maxs){
+    $minspx: #{$mins + px};
+    $dif: #{($maxs - $mins) * .05vw};
+    font-size: calc(#{$minspx} + #{$dif});
+    @include bup(hd) {
+        font-size: #{$maxs + px};
+    }
+    @include bdown(xs) {
+        font-size: #{$mins + px};
+    }
+}
+@function strip-unit($value) {
+    @return math.div($value, $value * 0 + 1);
+}
+@mixin fluid-font($max-font-size) {
+    $min-font-size: math.div($max-font-size, 1.4);
+    $min-vw: 480px;
+    $max-vw: 1920px;
+    $u1: math.unit($min-vw);
+    $u2: math.unit($max-vw);
+    $u3: math.unit($min-font-size);
+    $u4: math.unit($max-font-size);
+
+    font-size: $min-font-size;
+    @media screen and (min-width: $min-vw) {
+        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+    }
+    @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+    }
+}
+
+@mixin letter-spacing($points) {
+    $empoints: math.div($points, 1000);
+    letter-spacing: #{$empoints + em};
+}
+
+@mixin btn-detail($color, $hover-color, $border-width, $fsmin, $fsmax) {
+    color: #{$color};
+    border: #{$border-width}px solid $color;
+    @include font-count($fsmin, $fsmax);
+    @include transition;
+    &:hover {
+        color: #{$hover-color};
+        border: #{$border-width}px solid $hover-color;
+    }
+}
+@mixin row() {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+@mixin column($width, $grow:0, $shr: 1, $bs: $width) {
+	width: $width;
+	flex: #{$grow} #{$shr} #{$bs};
+}
+
+@mixin liquid-column($cols, $col-gap){
+    column-count: $cols;
+    @if ($col-gap){
+        column-gap: $col-gap;
+    }
+}
+
+
+@for $i from 1 through 20 {
+    $iteration: 5;
+    $j: $i * $iteration;
+    $flex-basis: $j;
+    .basis-#{$j} { 
+        flex-basis: math.div(math.percentage($flex-basis), 100);
+    }
+    .sized-#{$j} {
+        max-width: math.div(math.percentage($flex-basis), 100);
+    }
+}
+@for $i from 1 through 20 {
+    $iteration: 5;
+    $j: $i * $iteration;
+    $flex-basis: $j;
+    @include bup(md){
+        .basis-#{$j} { 
+            max-width: math.div(math.percentage($flex-basis), 100);
+        }
+        .sized-dt-#{$j},
+        .basis-dt-#{$j} {
+            flex-basis: math.div(math.percentage($flex-basis), 100);
+            max-width: math.div(math.percentage($flex-basis), 100);
+        }
+    }
+}
+@for $i from 1 through 20 {
+    $iteration: 5;
+    $j: $i * $iteration;
+    $flex-basis: $j;
+    @include bup(ls){
+        .sized-ls-#{$j},
+        .basis-ls-#{$j} {
+            flex-basis: math.div(math.percentage($flex-basis), 100);
+            max-width: math.div(math.percentage($flex-basis), 100);
+        }
+    }
+}
+@for $i from 1 through 20 {
+    $iteration: 5;
+    $j: $i * $iteration;
+    $flex-basis: $j;
+    @include bbetween(xs, md){
+        .sized-mobile-h-#{$j},
+        .sized-mh-#{$j} {
+            max-width: math.div(math.percentage($flex-basis), 100);
+        }
+        .basis-mobile-h-#{$j},
+        .basis-mh-#{$j} {
+            flex-basis: math.div(math.percentage($flex-basis), 100);
+            max-width: math.div(math.percentage($flex-basis), 100);
+        }
+    }
+    @include bdown(xs) {
+        .sized-mobile-v-#{$j},
+        .sized-mv-#{$j} {
+            max-width: math.div(math.percentage($flex-basis), 100);
+        }
+        .basis-mobile-v-#{$j},
+        .basis-mv-#{$j} {
+            flex-basis: math.div(math.percentage($flex-basis), 100);
+            max-width: math.div(math.percentage($flex-basis), 100);
+        }
+    }
+    
+}
+@for $i from 2 through 6 {
+    .wrap-#{$i}{
+        flex-wrap: wrap;
+        display: flex;
+        margin-left: -15px;
+        margin-right: -15px;
+        // .col {
+        //     flex: 0 0 calc(100% / #{$i});
+        // }
+        & > * {
+            flex: 0 0 calc(100% / #{$i});
+            padding: 15px;
+            max-width: calc(100% / #{$i});
+        }
+    }
+}
+@for $i from 2 through 6 {
+    @include bbetween(xs, md){
+        .wrap-#{$i}{
+            // .col {
+            //     flex: 0 0 49%;
+            // }
+            & > * {
+                flex: 0 0 49%;
+                max-width: 49%;
+            }
+        }
+    }
+    @include bdown(xs){
+        .wrap-#{$i}{
+            // .col {
+            //     flex: 0 0 100%;
+            // }
+            & > * {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+    }
+}
+@for $i from 1 through 6 {
+    @include bbetween(xs, md){
+        .wrap-mobile-h-#{$i},
+        .wrap-mh-#{$i}{
+            & > * {
+                flex: 0 0 calc(100% / #{$i});
+                max-width: calc(100% / #{$i});
+                padding: 15px;
+            }
+        }
+    }
+    @include bdown(xs){
+         .wrap-mobile-v-#{$i},
+         .wrap-mv-#{$i}{
+            & > * {
+                flex: 0 0 calc(100% / #{$i});
+                padding: 15px;
+                max-width: calc(100% / #{$i});
+            }
+        }
+    }
+    @include bup(md){
+        .wrap-dt-#{$i}{
+           & > * {
+               flex: 0 0 calc(100% / #{$i});
+               padding: 15px;
+               max-width: calc(100% / #{$i});
+           }
+       }
+    }
+    @include bup(ls){
+        .wrap-ls-#{$i}{
+           & > * {
+               flex: 0 0 calc(100% / #{$i});
+               padding: 15px;
+               max-width: calc(100% / #{$i});
+           }
+       }
+    }
+}
+@for $i from 0 through 5 {
+    .flex-grow-#{$i}{
+        flex-grow: #{$i};
+    }
+}
+@mixin sfs($fs) {
+    $calced-size: $fs / var.$bfs;
+    font-size: #{$calced-size + em};
+}
+@function rem($pixels) {
+    @return #{math.div($pixels, var.$bfs)}rem;
+}
+@function em($pixels) {
+    @return #{math.div($pixels, var.$bfs)}em;
+}
+

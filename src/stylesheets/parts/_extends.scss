@@ -1,0 +1,120 @@
+@use "../core/variables" as var;
+
+
+%share-style1 {
+    display: flex;
+    padding-top: 0;
+    padding-right: 0;
+    align-items: center;
+    li {
+        position: relative;
+    }
+    a {
+        font-size: 1.5em;
+        height: 1.5em;
+        width: 1.5em;
+        color: #CCCCCC;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 1.5rem;
+        &:hover {
+            color: #fff;
+        }
+    }
+}
+%share-style2 {
+    .icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        font-size: 1em;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 5px;
+        background-color: #fff;
+        color: #fff;
+        &:before {
+            font-size: .7em;
+        }
+        &:hover {
+            color: var.$gray;
+        }
+        &-facebook {
+            background-color: #3B5998;
+        }
+        &-pinterest {
+            background-color: #CB2027;
+        }
+        &-twitter {
+            background-color: #7ED0E2;
+        }
+        &-linkedin-square {
+            background-color: #486AAE;
+        }
+        &-instagram {
+            background-color: #506897;
+        }
+        &-linkedin {
+            background-color: #007BB6;
+        }
+    }
+}
+%share-style3 {
+    .icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.2em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 5px;
+        background-color: #fff;
+        border-radius: 50%;
+        &:before {
+            font-size: .7em;
+        }
+        &:hover {
+            color: var.$gray;
+        }
+    }
+}
+%share-style4 {
+    a {
+        width: 2rem;
+        height: 2rem;
+        font-size: 1rem;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 5px;
+        background-color: #707070;
+        color: #fff;
+        &.icon-facebook {
+            background-color: #3B5998;
+        }
+        &.icon-pinterest {
+            background-color: #CB2027;
+        }
+        &.icon-youtube {
+            background-color: #FF0000;
+        }
+        &.icon-twitter {
+            background-color: #7ED0E2;
+        }
+        &.icon-linkedin-square {
+            background-color: #486AAE;
+        }
+        &.icon-instagram {
+            background-color: #506897;
+        }
+        &.icon-linkedin {
+            background-color: #007BB6;
+        }
+        &.icon-mail {
+            background-color: #6F7173;
+        }
+    }
+}
+
+

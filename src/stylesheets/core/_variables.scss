@@ -1,0 +1,32 @@
+$black: #000000;
+$blackalt: #2b2b33;
+$white: #fff;
+$base: #292929;
+$gray: #d4d4d4;
+$darkgray: #3b3b3b;
+$beige: #f7f7f7;
+$yellow: #ffdb3c;
+$purple: #720067;
+$pink: #ea80fc;
+$blue: #00b0ff;
+$green: #64dd17;
+$red: #f20042;
+$scarlet: #f44336;
+$orange: #ff9100;
+
+$box: 1230px;
+
+//breakpoints
+$breakpoints: (
+    'ls': 2430px,
+    'hd': 1919px,
+    'hg': 1600px,
+    'lg': 1400px,
+    'nm': 1250px,
+    'md': 991px,
+    'sm': 768px,
+    'xs': 480px,
+    'xxs': 385px
+)!default;
+
+$bfs: 20;
