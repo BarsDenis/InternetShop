@@ -1,0 +1,113 @@
+@use "../core/mixins" as mix;
+@use "../core/variables" as var;
+
+.slider-wrapper {
+	position: relative !important;
+	max-width: 100%;
+	.slick-slide {
+		img {
+			max-height: 400px;
+			object-fit: contain;
+
+		}
+	}
+
+	.prev-arrow,
+	.next-arrow {
+		position: absolute;
+		text-decoration: none;
+		transition: 300ms ease-in-out;
+		z-index: 20;
+	}
+
+	.white-prev-arrow {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: var.$white;
+		width: mix.rem(38);
+		height: mix.rem(38);
+		color: var.$blackalt;
+		font-size: mix.rem(16);
+
+		&.icon-arrow-left:before {
+			content: "\e904";
+			// font-family: var.$icomoon;
+			font-weight: 700;
+		}
+		&:hover {
+			filter: brightness(90%);
+		}
+		@include mix.bdown(sm) {
+			width: mix.rem(30);
+			height: mix.rem(30);
+		}
+	}
+	.white-next-arrow {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: var.$green;
+		background-color: var.$white;
+		width: mix.rem(38);
+		height: mix.rem(38);
+		color: var.$blackalt;
+		font-size: mix.rem(16);
+
+		&.icon-arrow-right:before {
+			content: "\e905";
+			// font-family: var.$icomoon;
+			font-weight: 700;
+		}
+		&:hover {
+			filter: brightness(90%);
+		}
+		@include mix.bdown(sm) {
+			width: mix.rem(30);
+			height: mix.rem(30);
+		}
+	}
+}
+
+
+.slick-dots {
+	ul {
+		display: flex !important;
+		justify-content: center;
+		position: absolute;
+		bottom: 2rem;
+		right: 5rem;
+		transform: translateX(-50%);
+		margin-bottom: 0;
+		@include mix.bdown(sm) {
+			right: 3rem;
+		}
+		@include mix.bdown(xs) {
+			right: 2rem;
+			bottom: 1rem;
+		}
+		> li:only-child {
+			display: none;
+		}
+		li {
+			list-style-type: none;
+			margin-left: 0.2rem;
+			margin-right: 0.2rem;
+
+			i {
+				font-size: 11px;
+				width: 14px;
+				height: 14px;
+				border-radius: 50%;
+				color: rgba($color: var.$black, $alpha: 0.5);
+				@include mix.transition;
+			}
+			&.slick-active {
+				i {
+					color: var.$green;
+					transform: scale(150%);
+				}
+			}
+		}
+	}
+}
