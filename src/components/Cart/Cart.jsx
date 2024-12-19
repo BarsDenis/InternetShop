@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
 
 export default function Cart() {
     const [empty, setEmpty] = useState(true);
     const [cartlist, setCartList] = useState([]);
-
+    const deleteAllCart = () => {
+        localStorage.clear();
+        setCartList([]);
+    };
     useEffect(() => {
         setCartList(JSON.parse(localStorage.getItem("readyForBuy")));
         if (cartlist === null) {
-            localStorage.setItem("readyForBuy", JSON.stringify([]));
+            // localStorage.setItem("readyForBuy", JSON.stringify([]));
             setEmpty(true);
         }
         console.log("unside", cartlist);
@@ -18,13 +22,13 @@ export default function Cart() {
         let btn = e.target;
         let parent = btn.closest(".item-wrapper");
         let title = parent.querySelector(".h3-style").innerText;
-        let filter = cartlist.filter((item) => item.title !== title)
+        let filter = cartlist.filter((item) => item.title !== title);
         localStorage.setItem("readyForBuy", JSON.stringify(filter));
         setCartList(filter);
+        console.log("delete", cartlist);
     };
 
-    console.log("outside", cartlist);
-    const cartArr = cartlist.map((item, index) => {
+    const cartArr = cartlist?.map((item, index) => {
         return (
             <CartItem
                 key={index}
@@ -43,11 +47,28 @@ export default function Cart() {
                 <div className="text-center bold mb-2">
                     <h2>Cart</h2>
                 </div>
-                {cartArr.length > 0 ? (
+                <div className="mb-2 text-right">
+                    {cartArr?.length > 0 && (
+                        <button
+                            className="btn btn-red-dimm"
+                            onClick={deleteAllCart}
+                        >
+                            Clear All
+                        </button>
+                    )}
+                </div>
+                {cartArr?.length > 0 ? (
                     cartArr
                 ) : (
                     <div className="text-center bold mb-2">
-                        <h2>Cart is empty</h2>
+                        <div className="mb-2 text-red">
+                            <h2>Cart is empty</h2>
+                        </div>
+                        <div>
+                            <Link to="/" className="btn btn-blue-inverted">
+                                Go to Shop
+                            </Link>
+                        </div>
                     </div>
                 )}
             </div>

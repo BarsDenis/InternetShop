@@ -10,6 +10,8 @@ export default function CartItem({ image, title, price, stock, deleteBtn }) {
         count >= stock ? false : setCount(count + 1);
     };
 
+
+
     return (
         <div className="item-wrapper bg-beige p-2 mb-2">
             <div className="d-flex flex-aic">
@@ -18,7 +20,7 @@ export default function CartItem({ image, title, price, stock, deleteBtn }) {
                 </div>
                 <div>
                     <div className="mb-1 h3-style bold">{title}</div>
-                    <div className="bold mb-2">${price}</div>
+                    <div className="bold mb-2">${price * count}</div>
                     <div className="mb-2 d-flex">
                         <button
                             onClick={handleMinus}

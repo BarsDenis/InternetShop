@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function SingleTemplate({
     header,
@@ -6,8 +7,15 @@ export default function SingleTemplate({
     price,
     image,
     rating,
-    addToBasket
+    addToBasket,
 }) {
+    const [inCart, setInCart] = useState(false);
+
+    const addToCart = () => {
+        setInCart(true);
+        addToBasket();
+    };
+
     return (
         <>
             <div className="row">
@@ -29,9 +37,18 @@ export default function SingleTemplate({
                     </div>
                     <div className="d-flex">
                         <div className="mb-2 bold mr-2">
-                            <button className="btn btn-blue-inverted" onClick={addToBasket}>
-                                Add to Basket
-                            </button>
+                            {inCart ? (
+                                <div className="btn btn-green-dimm text-white">
+                                    Already in cart!
+                                </div>
+                            ) : (
+                                <button
+                                    className="btn btn-blue-inverted"
+                                    onClick={addToCart}
+                                >
+                                    Add to Cart
+                                </button>
+                            )}
                         </div>
                         <div className="mb-2 bold">
                             <Link to="/cart" className="btn btn-blue-inverted">
