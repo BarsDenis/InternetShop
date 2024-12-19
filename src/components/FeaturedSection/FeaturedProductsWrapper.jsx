@@ -22,9 +22,10 @@ export default function FeaturedProductsWrapper() {
 				});
 		}
 	}, [fetching]);
-	// console.log(
-	// 	getData.forEach((cat) => console.log(cat.category))
-	// );
+	const categories =	getData.map((cat) => cat.category)
+	const uniqueCategories = new Set(categories);
+	console.log(Array.from(uniqueCategories));
+	
 	const products = useMemo(() => {
 		return getData
 			.filter((product) =>

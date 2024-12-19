@@ -4,7 +4,7 @@ export default function ImgProductSlider({ image }) {
 	const settings = {
 		dots: true,
 		arrows: false,
-		infinite: true,
+		infinite: false,
 		speed: 500,
 		slidesToShow: 1,
 		slidesToScroll: 1,
