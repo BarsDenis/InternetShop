@@ -8,7 +8,7 @@ export default function ImgProductSlider({ image }) {
 		speed: 500,
 		slidesToShow: 1,
 		slidesToScroll: 1,
-		autoplay: true,
+		autoplay: false,
 		autoplaySpeed: 3000,
 		pauseOnHover: true,
 		appendDots: (dots) => (
