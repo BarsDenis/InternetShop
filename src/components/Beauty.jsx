@@ -7,7 +7,6 @@ export default function Beauty() {
   const [fetching, setFetching] = useState(true);
   const [load, setLoad] = useState(0);
   const link = useLocation().pathname
-  console.log(link)
   useEffect(() => {
     if (fetching) {
       fetch(

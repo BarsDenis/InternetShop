@@ -20,7 +20,7 @@ export default function CartItem({ image, title, price, stock, deleteBtn }) {
                 </div>
                 <div>
                     <div className="mb-1 h3-style bold">{title}</div>
-                    <div className="bold mb-2">${price * count}</div>
+                    <div className="bold mb-2">${(price * count).toFixed(2)}</div>
                     <div className="mb-2 d-flex">
                         <button
                             onClick={handleMinus}

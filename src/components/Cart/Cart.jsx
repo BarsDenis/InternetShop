@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
 
 export default function Cart() {
+   
     const [empty, setEmpty] = useState(true);
     const [cartlist, setCartList] = useState([]);
     const deleteAllCart = () => {
@@ -11,9 +12,8 @@ export default function Cart() {
     };
     useEffect(() => {
         setCartList(JSON.parse(localStorage.getItem("readyForBuy")));
-        cartlist === null? setEmpty(true) : setEmpty(false);
-        
-    }, []);
+        cartlist === null ? setEmpty(true) : setEmpty(false);
+    }, [empty]);
 
     const deleteBtn = (e) => {
         let btn = e.target;
@@ -31,11 +31,29 @@ export default function Cart() {
                 image={item.thumbnail}
                 title={item.title}
                 price={item.price}
+                summ={item.price}
                 stock={item.stock}
                 deleteBtn={deleteBtn}
             />
         );
     });
+    console.log(111)
+    const buyItems = () => {
+        // localStorage.clear();
+        // setCartList([]);
+        cartlist.forEach((item) => {
+            fetch(`https://dummyjson.com/products/${item.id}`, {
+                method: "PUT" /* or PATCH */,
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    stock: `${item.price}`,
+                }),
+            })
+                .then((res) => res.json())
+                .then(console.log);
+        });
+          
+    };
 
     return (
         <section>
@@ -54,7 +72,19 @@ export default function Cart() {
                     )}
                 </div>
                 {cartArr?.length > 0 ? (
-                    cartArr
+                    cartArr && (
+                        <>
+                            {cartArr}
+                            <div className="text-center">
+                                <button
+                                    onClick={buyItems}
+                                    className="btn btn-blue"
+                                >
+                                    Buy
+                                </button>
+                            </div>
+                        </>
+                    )
                 ) : (
                     <div className="text-center bold mb-2">
                         <div className="mb-2 text-red">

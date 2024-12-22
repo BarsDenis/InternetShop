@@ -1,7 +1,7 @@
 import SingleTemplate from "./SingleTemplate";
 import Reviews from "./Reviews";
 import { useParams, useNavigate } from "react-router-dom";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useMemo } from "react";
 
 export default function ProductInside() {
 	const id = useParams().id;
@@ -17,9 +17,9 @@ export default function ProductInside() {
 			.then((data) => {
 				setProduct(data);
 			});
-	});
+	}, []);
 
-	const reviews = product.reviews?.map((review, index) => {
+	const reviews = useMemo( () =>  product.reviews?.map((review, index) => {
 		return (
 			<Reviews
 				key={index}
@@ -30,7 +30,7 @@ export default function ProductInside() {
 				reviewName={review.reviewerName}
 			/>
 		);
-	});
+	}), []);
 
 	const storageArr = JSON.parse(localStorage.getItem("readyForBuy")) || [];
 	const storage = useCallback(() => {
