@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
 
 export default function Cart() {
-   
     const [empty, setEmpty] = useState(true);
     const [cartlist, setCartList] = useState([]);
     const deleteAllCart = () => {
@@ -24,35 +23,42 @@ export default function Cart() {
         setCartList(filter);
     };
 
+    const [count, setCount] = useState(1);
+
     const cartArr = cartlist?.map((item, index) => {
         return (
             <CartItem
+                count={count}
                 key={index}
                 image={item.thumbnail}
                 title={item.title}
                 price={item.price}
-                summ={item.price}
                 stock={item.stock}
                 deleteBtn={deleteBtn}
+                handleMinus={() =>
+                    count > 1 ? setCount(count - 1) : false
+                }
+                handlePlus={() =>
+                    count >= item.stock ? false : setCount(count + 1)
+                }
             />
         );
     });
-    console.log(111)
+
     const buyItems = () => {
-        // localStorage.clear();
-        // setCartList([]);
+        localStorage.clear();
+        setCartList([]);
         cartlist.forEach((item) => {
             fetch(`https://dummyjson.com/products/${item.id}`, {
                 method: "PUT" /* or PATCH */,
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    stock: `${item.price}`,
+                    stock: `${item.stock - count} `,
                 }),
             })
                 .then((res) => res.json())
                 .then(console.log);
         });
-          
     };
 
     return (

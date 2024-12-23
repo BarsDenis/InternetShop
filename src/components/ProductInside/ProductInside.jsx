@@ -30,7 +30,7 @@ export default function ProductInside() {
 				reviewName={review.reviewerName}
 			/>
 		);
-	}), []);
+	}), [product.reviews]);
 
 	const storageArr = JSON.parse(localStorage.getItem("readyForBuy")) || [];
 	const storage = useCallback(() => {
