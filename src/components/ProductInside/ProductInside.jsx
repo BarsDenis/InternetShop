@@ -19,7 +19,7 @@ export default function ProductInside() {
 			});
 	}, []);
 
-	const reviews = useMemo( () =>  product.reviews?.map((review, index) => {
+	const reviews = useMemo(() =>  product.reviews?.map((review, index) => {
 		return (
 			<Reviews
 				key={index}
@@ -30,14 +30,17 @@ export default function ProductInside() {
 				reviewName={review.reviewerName}
 			/>
 		);
-	}), [product.reviews]);
+	}), [product.reviews]); //вопрос перерендрится ли коммпент при добавлении нового из-за usememo ...arr
 
+	
 	const storageArr = JSON.parse(localStorage.getItem("readyForBuy")) || [];
 	const storage = useCallback(() => {
 		storageArr.push(product);
 		const local = JSON.stringify(storageArr);
 		localStorage.setItem("readyForBuy", local);
 	}, [product]);
+
+//  работу с local storage вынести в отдельный компонент. Сделать работу и проверку storage классом
 
 	return (
 		<section>
