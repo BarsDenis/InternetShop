@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useCallback, useEffect, useState, useMemo } from "react";
 
 export default function ProductInside() {
-	localStorage.clear()
+	// localStorage.clear()
 	const id = useParams().id;
 	const navigate = useNavigate();
 	const goBack = () => {
@@ -19,12 +19,7 @@ export default function ProductInside() {
 				setProduct(data);
 			});
 	}, []);
-<<<<<<< HEAD
 	const reviews = useMemo( () =>  product.reviews?.map((review, index) => {
-=======
-
-	const reviews = useMemo(() =>  product.reviews?.map((review, index) => {
->>>>>>> 094df07caf4dd2fee0f9e815eea7fc7305116b1c
 		return (
 			<Reviews
 				key={index}
@@ -35,17 +30,14 @@ export default function ProductInside() {
 				reviewName={review.reviewerName}
 			/>
 		);
-	}), [product.reviews]); //вопрос перерендрится ли коммпент при добавлении нового из-за usememo ...arr
+	}), [product.reviews]);
 
-	
 	const storageArr = JSON.parse(localStorage.getItem("readyForBuy")) || [];
 	const storage = useCallback(() => {
 		storageArr.push(product);
 		const local = JSON.stringify(storageArr);
 		localStorage.setItem("readyForBuy", local);
 	}, [product]);
-
-//  работу с local storage вынести в отдельный компонент. Сделать работу и проверку storage классом
 
 	return (
 		<section>
