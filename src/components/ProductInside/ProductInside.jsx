@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useCallback, useEffect, useState, useMemo } from "react";
 
 export default function ProductInside() {
+	localStorage.clear()
 	const id = useParams().id;
 	const navigate = useNavigate();
 	const goBack = () => {
@@ -18,7 +19,6 @@ export default function ProductInside() {
 				setProduct(data);
 			});
 	}, []);
-
 	const reviews = useMemo( () =>  product.reviews?.map((review, index) => {
 		return (
 			<Reviews

@@ -3,44 +3,83 @@ import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
 
 export default function Cart() {
-    const [empty, setEmpty] = useState(true);
     const [cartlist, setCartList] = useState([]);
+    const [productCount, setProductCount] = useState({});
+
+    useEffect(() => {
+        setCartList(
+            JSON.parse(localStorage.getItem("readyForBuy")).map((item) => {
+                return {
+                    item,
+                    count: 1,
+                    price: item.price,
+                };
+            })
+        );
+        console.log("1", localStorage);
+    }, []);
+
     const deleteAllCart = () => {
         localStorage.clear();
         setCartList([]);
     };
-    useEffect(() => {
-        setCartList(JSON.parse(localStorage.getItem("readyForBuy")));
-        cartlist === null ? setEmpty(true) : setEmpty(false);
-    }, [empty]);
+
+    const minusProductCount = (e) => {
+        let btn = e.target;
+        let parent = btn.closest(".item-wrapper");
+        let title = parent.querySelector(".h3-style").innerText;
+
+        cartlist.forEach((product) => {
+            if (product.item.title === title && product.count > 1) {
+                setProductCount(product.count--);
+            }
+        });
+        localStorage.setItem("readyForBuy", JSON.stringify(cartlist));
+        // setCartList(cartlist);
+    };
+
+    const plusProductCount = (e) => {
+        let btn = e.target;
+        let parent = btn.closest(".item-wrapper");
+        let title = parent.querySelector(".h3-style").innerText;
+
+        cartlist.forEach((product) => {
+            if (
+                product.item.title === title &&
+                product.count < product.item.stock
+            ) {
+                setProductCount(product.count++);
+            }
+        });
+        const local = JSON.stringify(cartlist);
+        localStorage.setItem("readyForBuy", local);
+        // localStorage.setItem("readyForBuy", JSON.stringify(test));
+        console.log("test", localStorage);
+        // setCartList(cartlist);
+    };
 
     const deleteBtn = (e) => {
         let btn = e.target;
         let parent = btn.closest(".item-wrapper");
         let title = parent.querySelector(".h3-style").innerText;
-        let filter = cartlist.filter((item) => item.title !== title);
+        let filter = cartlist.filter((product) => product.item.title !== title);
         localStorage.setItem("readyForBuy", JSON.stringify(filter));
         setCartList(filter);
     };
 
-    const [count, setCount] = useState(1);
-
-    const cartArr = cartlist?.map((item, index) => {
+    const cartArr = cartlist?.map(({ item, count, price }, index) => {
         return (
             <CartItem
                 count={count}
+                price={price}
                 key={index}
                 image={item.thumbnail}
                 title={item.title}
-                price={item.price}
+                // price={item.price}
                 stock={item.stock}
                 deleteBtn={deleteBtn}
-                handleMinus={() =>
-                    count > 1 ? setCount(count - 1) : false
-                }
-                handlePlus={() =>
-                    count >= item.stock ? false : setCount(count + 1)
-                }
+                minusProductCount={minusProductCount}
+                plusProductCount={plusProductCount}
             />
         );
     });
@@ -48,19 +87,19 @@ export default function Cart() {
     const buyItems = () => {
         localStorage.clear();
         setCartList([]);
-        cartlist.forEach((item) => {
-            fetch(`https://dummyjson.com/products/${item.id}`, {
+        cartlist.forEach((product) => {
+            fetch(`https://dummyjson.com/products/${product.item.id}`, {
                 method: "PUT" /* or PATCH */,
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    stock: `${item.stock - count} `,
+                    stock: `${product.item.stock - product.count} `,
                 }),
             })
                 .then((res) => res.json())
                 .then(console.log);
         });
     };
-
+    console.log("cartArr", cartArr);
     return (
         <section>
             <div className="container">

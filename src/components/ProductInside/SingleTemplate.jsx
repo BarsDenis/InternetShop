@@ -25,7 +25,7 @@ export default function SingleTemplate({
         setInCart(true);
     };
 
-	return (
+    return (
         <>
             <div className="row">
                 <div className="col basis-30">
@@ -49,8 +49,14 @@ export default function SingleTemplate({
                     <div className="d-flex">
                         <div className="mb-2 bold mr-2">
                             {inCart ? (
-                                <div className="btn btn-green-dimm text-white">
-                                    Already in cart!
+                                <div className="d-flex flex-aic">
+                                    <div className="mr-1">Already in cart!</div>
+                                    <Link
+                                        to="/cart"
+                                        className="btn btn-blue-inverted"
+                                    >
+                                        Go to Cart
+                                    </Link>
                                 </div>
                             ) : (
                                 <button
@@ -60,11 +66,6 @@ export default function SingleTemplate({
                                     Add to Cart
                                 </button>
                             )}
-                        </div>
-                        <div className="mb-2 bold">
-                            <Link to="/cart" className="btn btn-blue-inverted">
-                                Go to Cart
-                            </Link>
                         </div>
                     </div>
                 </div>
