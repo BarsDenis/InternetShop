@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
 
-export default function FeaturedProductItem({
+function FeaturedProductItem({
   productImage,
   productHeader,
   productPrice,
@@ -22,3 +23,5 @@ export default function FeaturedProductItem({
     </div>
   );
 }
+
+export default memo(FeaturedProductItem);
