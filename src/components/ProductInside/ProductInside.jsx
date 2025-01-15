@@ -19,23 +19,36 @@ export default function ProductInside() {
 				setProduct(data);
 			});
 	}, []);
-	const reviews = useMemo( () =>  product.reviews?.map((review, index) => {
-		return (
-			<Reviews
-				key={index}
-				reviewDate={review.date}
-				reviewComment={review.comment}
-				reviewRating={review.rating}
-				reviewMail={review.reviewerEmail}
-				reviewName={review.reviewerName}
-			/>
-		);
-	}), [product.reviews]);
+	const reviews = useMemo(
+		() =>
+			product.reviews?.map((review, index) => {
+				return (
+					<Reviews
+						key={index}
+						reviewDate={review.date}
+						reviewComment={review.comment}
+						reviewRating={review.rating}
+						reviewMail={review.reviewerEmail}
+						reviewName={review.reviewerName}
+					/>
+				);
+			}),
+		[product.reviews]
+	);
 
 	const storageArr = JSON.parse(localStorage.getItem("readyForBuy")) || [];
 	const storage = useCallback(() => {
 		storageArr.push(product);
-		const local = JSON.stringify(storageArr);
+		const convertToObj = storageArr.map((product) => {
+			return {
+				item: product,
+				count: 1,
+				price: product.price,
+			};
+		});
+		console.log("test", convertToObj);
+		const local = JSON.stringify(convertToObj);
+		console.log("local", local);
 		localStorage.setItem("readyForBuy", local);
 	}, [product]);
 

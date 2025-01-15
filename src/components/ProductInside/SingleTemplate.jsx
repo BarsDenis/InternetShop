@@ -14,11 +14,15 @@ export default function SingleTemplate({
     const [inCart, setInCart] = useState(false);
 
     const id = useParams().id;
+
+
+// Поправить тут после добавления ключей
     useEffect(() => {
         const cart = JSON.parse(localStorage.getItem("readyForBuy"));
-        const alreadyInCart = cart?.find((item) => item.id == id);
+        const alreadyInCart = cart?.find((product) => product.item.id == id);
         alreadyInCart ? setInCart(true) : setInCart(false);
     }, [id]);
+
 
     const addToCart = () => {
         addToBasket();
