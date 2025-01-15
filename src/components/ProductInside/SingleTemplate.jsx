@@ -16,7 +16,6 @@ export default function SingleTemplate({
     const id = useParams().id;
 
 
-// Поправить тут после добавления ключей
     useEffect(() => {
         const cart = JSON.parse(localStorage.getItem("readyForBuy"));
         const alreadyInCart = cart?.find((product) => product.item.id == id);

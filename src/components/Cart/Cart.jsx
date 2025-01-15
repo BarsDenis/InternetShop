@@ -54,9 +54,7 @@ export default function Cart() {
 	};
 
 	const cartArr = cartlist?.map(({ item, count, price }, index) => {
-    // console.log("cartlist",cartlist);
-      console.log("item", item);
-
+    
 		return (
 			<CartItem
 				count={count}
