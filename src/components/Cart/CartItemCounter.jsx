@@ -7,25 +7,15 @@ export default function CartItemCounter({
     plusProductCount,
     
 }) {
-    // const [count, setCount] = useState(1);
+   
     const [totalPrice, setTotalPrice] = useState(price);
-
-    // const handleMinus = () => {
-    //     count > 1 ? setCount(count - 1) : false;
-    //     return minusProductCount(count);
-    // };
-
-    // const handlePlus = () => {
-    //     count >= stock ? false : setCount(count + 1);
-    //     return plusProductCount(count);
-    // };
 
     useEffect(() => {
         setTotalPrice(value * price);
     }, [value]);
 
     return (
-        <div className="d-flex flex-jcsb ">
+        <div className="d-flex flex-jcsb flex-aic">
             <div className="mb-2 d-flex">
                 <button
                     onClick={minusProductCount}

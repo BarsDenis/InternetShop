@@ -1,9 +1,4 @@
-import { useState, useEffect } from "react";
-
 export default function CartItemPrice({ total}) {
-   
-   
-   
 
     return (
         <div className="bold mb-2 mr-2">
