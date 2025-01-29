@@ -3,17 +3,17 @@ import Home from "./components/Home";
 import Beauty from "./components/Beauty";
 import Fragrances from "./components/Fragrances";
 import Layout from "./components/Layout";
-import ProductInside from "./components/ProductInside/ProductInside";
+import SingleProductPage from "./components/SingleProductPage";
 import Groceries from "./components/Groceries";
 import Furniture from "./components/Furniture";
-import Cart from "./components/Cart/Cart";
+import Cart from "./components/CartPage/Cart";
 
 export default function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index path="" element={<Home />} />
-        <Route path="/product/:id" element={<ProductInside />} />
+        <Route path="/product/:id" element={<SingleProductPage />} />
         <Route path="/beauty" element={<Beauty />} />
         <Route path="/fragrances" element={<Fragrances />} />
         <Route path="/groceries" element={<Groceries />} />

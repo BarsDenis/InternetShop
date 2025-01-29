@@ -1,4 +1,4 @@
-import FeaturedSection from "./FeaturedSection/FeaturedSection";
+import FeaturedSection from "./HomePage/FeaturedSection/FeaturedSection";
 
 export default function Home() {
   return (

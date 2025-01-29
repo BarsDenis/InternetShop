@@ -1,7 +1,7 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import FeaturedProductItem from "./FeaturedProductItem";
 import { useSearchParams } from "react-router-dom";
-import SearchForm from "./SearchForm";
+import SearchForm from "../SearchForm";
 export default function FeaturedProductsWrapper() {
   const [getData, setGetData] = useState([]);
   const [fetching, setFetching] = useState(true);
@@ -22,8 +22,9 @@ export default function FeaturedProductsWrapper() {
         });
     }
   }, [fetching]);
-  const categories = getData.map((cat) => cat.category);
-  const uniqueCategories = new Set(categories);
+  
+  // const categories = getData.map((cat) => cat.category);
+  // const uniqueCategories = new Set(categories);
   // console.log(Array.from(uniqueCategories));
 
   const products = getData
