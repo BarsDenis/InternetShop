@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { selectIsInCart } from "../../store/product/productSlice";
+import { setToCart } from "../../store/cart/cartSlice";
 import ImgProductSlider from "./ImgProductSlider";
 
 export default function SingleTemplate({
@@ -9,23 +11,27 @@ export default function SingleTemplate({
     price,
     image,
     rating,
-    addToBasket,
+    thumbnail,
+    stock,
 }) {
-    const [inCart, setInCart] = useState(false);
-
+    const dispatch = useDispatch();
     const id = useParams().id;
+    const inCart = useSelector((state) => selectIsInCart(state, id));
 
-
-    useEffect(() => {
-        const cart = JSON.parse(localStorage.getItem("readyForBuy"));
-        const alreadyInCart = cart?.find((product) => product.item.id == id);
-        alreadyInCart ? setInCart(true) : setInCart(false);
-    }, [id]);
-
-
-    const addToCart = () => {
-        addToBasket();
-        setInCart(true);
+    const handleAddToCart = () => {
+        dispatch(
+            setToCart({
+                item: {
+                    id,
+                    title: header,
+                    price,
+                    thumbnail,
+                    stock,
+                },
+                count: 1,
+                price,
+            })
+        );
     };
 
     return (
@@ -36,7 +42,7 @@ export default function SingleTemplate({
                 </div>
                 <div className="col">
                     <div className="mb-2 bold">
-                        <h1> {header}</h1>
+                        <h1>{header}</h1>
                     </div>
                     <div className="mb-2">
                         <p>{description}</p>
@@ -64,7 +70,7 @@ export default function SingleTemplate({
                             ) : (
                                 <button
                                     className="btn btn-blue-inverted"
-                                    onClick={addToCart}
+                                    onClick={handleAddToCart}
                                 >
                                     Add to Cart
                                 </button>

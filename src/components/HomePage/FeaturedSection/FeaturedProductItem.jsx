@@ -31,14 +31,14 @@ function FeaturedProductItem({
         </Link>
         <div className="favorite-wrapper d-flex flex-jcsb">
           <div className="ml-1">
-            <Link to={`/product/${productId}`} className="favorite-icon">
+            <div className="favorite-icon">
               {cartIcon}
-            </Link>
+            </div>
           </div>
           <div className="mr-1">
-            <Link to={`/product/${productId}`} className="favorite-icon">
+            <div className="favorite-icon">
               {favoriteIcon}
-            </Link>
+            </div>
           </div>
         </div>
       </div>

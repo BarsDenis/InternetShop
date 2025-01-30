@@ -1,4 +1,6 @@
-export default function Reviews({
+import { memo } from "react";
+
+const Reviews = memo(function Reviews({
     reviewDate,
     reviewComment,
     reviewRating,
@@ -16,11 +18,14 @@ export default function Reviews({
                     <p>{reviewComment}</p>
                 </div>
                 <div className="d-flex flex-jcsb">
-                    <div className="text-green mr-2">Rating: {reviewRating}</div>
+                    <div className="text-green mr-2">
+                        Rating: {reviewRating}
+                    </div>
                     <div className="text-blue mr-2">{reviewMail}</div>
-                    
                 </div>
             </div>
         </div>
     );
-}
+});
+
+export default Reviews;
