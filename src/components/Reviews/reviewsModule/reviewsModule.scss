@@ -1,0 +1,67 @@
+.reviews {
+    &-section {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+    &-list {
+        margin-top: 2rem;
+    }
+    &-loading,
+    &-error {
+        text-align: center;
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+    &-error {
+        color: #dc3545;
+    }
+}
+
+.review {
+    &-item {
+        border-bottom: 1px solid #eee;
+        padding: 1rem 0;
+    }
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+    }
+    &-rating {
+        color: #ffc107;
+        font-size: 1.2rem;
+    }
+    &-date {
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
+    &-comment {
+        color: #333;
+        line-height: 1.5;
+    }
+    &-form {
+        margin: 2rem 0;
+        padding: 1rem;
+        background-color: #f8f9fa;
+        border-radius: 4px;
+    }
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    select,
+    textarea {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+}
+

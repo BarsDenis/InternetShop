@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProduct } from '../../store/product/productSlice';
 import { setToCart } from '../../store/cart/cartSlice';
 import SingleTemplate from "./SingleTemplate";
-import Reviews from "./Reviews";
+import Reviews from "../Reviews/Reviews";
+import OldReviews from "./OldReviews";
 
 
 export default function ProductInside() {
@@ -57,8 +58,10 @@ export default function ProductInside() {
                     stock={product.stock}
                     addToBasket={handleAddToBasket}
                 />
+                
+                <Reviews productId={product.id} />
                 {product.reviews?.map((review, index) => (
-                    <Reviews
+                    <OldReviews
                         key={index}
                         reviewDate={review.date}
                         reviewComment={review.comment}
@@ -67,6 +70,7 @@ export default function ProductInside() {
                         reviewName={review.reviewerName}
                     />
                 ))}
+                 
             </div>
         </section>
     );

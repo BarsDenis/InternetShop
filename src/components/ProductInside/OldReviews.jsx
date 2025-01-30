@@ -1,12 +1,13 @@
 import { memo } from "react";
 
-const Reviews = memo(function Reviews({
+const OldReviews = memo(function Reviews({
     reviewDate,
     reviewComment,
     reviewRating,
     reviewMail,
     reviewName,
 }) {
+   
     return (
         <div className="mb-2 ">
             <div className="bg-beige p-2">
@@ -28,4 +29,4 @@ const Reviews = memo(function Reviews({
     );
 });
 
-export default Reviews;
+export default OldReviews;

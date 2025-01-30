@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { selectIsInCart } from "../../store/product/productSlice";
@@ -12,7 +11,7 @@ export default function SingleTemplate({
     image,
     rating,
     thumbnail,
-    stock,
+    stock
 }) {
     const dispatch = useDispatch();
     const id = useParams().id;
