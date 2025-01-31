@@ -7,6 +7,8 @@ import SingleProductPage from "./components/SingleProductPage";
 import Groceries from "./components/Groceries";
 import Furniture from "./components/Furniture";
 import Cart from "./components/CartPage/Cart";
+import FavoriteListPage from "./components/FavoritePage/FavoriteListPage";
+
 
 export default function App() {
   return (
@@ -19,6 +21,8 @@ export default function App() {
         <Route path="/groceries" element={<Groceries />} />
         <Route path="/furniture" element={<Furniture />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/favorite-list" element={<FavoriteListPage />} />
+
       </Route>
     </Routes>
   );

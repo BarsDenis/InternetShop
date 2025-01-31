@@ -31,12 +31,12 @@ export default function GetCategoryData() {
       return (
         <FeaturedProductItem
           key={product.id}
-          productId={product.id}
-          productCat={product.category}
-          productImage={<img src={product.thumbnail} alt={product.title} />}
-          productHeader={product.title}
-          productPrice={product.price}
-          productCount={product.stock}
+          id={product.id}
+          category={product.category}
+          image={<img src={product.thumbnail} alt={product.title} />}
+          title={product.title}
+          price={product.price}
+          count={product.stock}
         />
       );
     });

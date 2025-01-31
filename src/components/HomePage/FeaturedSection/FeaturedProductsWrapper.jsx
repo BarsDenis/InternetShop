@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { setToCart } from "../../../store/cart/cartSlice";
 import FeaturedProductItem from "./FeaturedProductItem";
 import SearchForm from "../SearchForm";
 
@@ -26,23 +24,6 @@ export default function FeaturedProductsWrapper() {
         }
     }, [fetching]);
 
-    const dispatch = useDispatch();
-
-    const handleAddToCart = (product) => {
-        dispatch(
-            setToCart({
-                item: {
-                    id: product.id,
-                    title: product.title,
-                    price: product.price,
-                    thumbnail: product.thumbnail,
-                    stock: product.stock,
-                },
-                count: 1,
-                price: product.price,
-            })
-        );
-    };
 
     const products = getData
         .filter((product) =>
@@ -54,14 +35,13 @@ export default function FeaturedProductsWrapper() {
             return (
                 <FeaturedProductItem
                     key={product.id}
-                    productId={product.id}
-                    productImage={
-                        <img src={product.thumbnail} alt={product.title} />
-                    }
-                    productHeader={product.title}
-                    productPrice={product.price}
-                    productCount={product.stock}
-                    handleCart={() => handleAddToCart(product)}
+                    id={product.id}
+                    image={product.thumbnail}  
+                    title={product.title}
+                    price={product.price}
+                    count={product.stock}
+                    thumbnail={product.thumbnail}
+                    stock={product.stock}
                 />
             );
         });

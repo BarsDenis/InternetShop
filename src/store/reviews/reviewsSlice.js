@@ -1,4 +1,3 @@
-// src/store/reviews/reviewsSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 // Mock data since the API endpoint might not be available

@@ -1,18 +1,30 @@
-// import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-// export const favoriteList = createSlice({
-//     name: "favoriteList",
-//     initialState: {
-//         value: [],
-//     },
-//     reducers: {
-//         addFavorite: (state, action) => {
-//             state.value.push(action.payload);
-//         },
-//         removeFavorite: (state, action) => {
-//             state.value = state.value.filter((item) => item.id !== action.payload);
-//         },
-//     },
-// });
+const initialState = {
+    items: []
+};
 
-// export const { actions, reducer } = favoriteList;
+const favoriteListSlice = createSlice({
+    name: 'favorite',
+    initialState,
+    reducers: {
+        addFavorite: (state, action) => {
+            const exists = state.items.some(item => item.id === action.payload.id);
+            if (!exists) {
+                state.items.push(action.payload);
+            }
+        },
+        removeFavorite: (state, action) => {
+            state.items = state.items.filter(item => item.id !== action.payload);
+        }
+    }
+});
+
+export const { addFavorite, removeFavorite } = favoriteListSlice.actions;
+
+export const selectFavoriteItems = (state) => state.favorite.items;
+export const selectIsInFavorite = (state, productId) => {
+    return state.favorite.items.some(item => item.id === productId);
+};
+
+export default favoriteListSlice.reducer;
