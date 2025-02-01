@@ -1,31 +1,13 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setToCart } from "../../store/cart/cartSlice.js";
 import { selectFavoriteItems } from "../../store/favoriteList/favoriteListSlice.js";
-import { cartIcon, inCartIcon } from "../UI/Fontawesome.jsx";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import CartButton from "../CartButton/CartButton";
 
 export default function FavoriteProductList() {
     const favoriteItems = useSelector(selectFavoriteItems);
-    const cartItems = useSelector((state) => state.cart.items);
 
-    const handleCart = (item) => {
-        dispatch(
-            setToCart({
-                item: {
-                    id: item.id,
-                    title: item.title,
-                    price: item.price,
-                    thumbnail: item.thumbnail,
-                    count: item.count,
-                },
-                count: 1,
-                price: item.price,
-            })
-        );
-    };
-
+  
     if (!favoriteItems || favoriteItems.length === 0) {
         return (
             <div className="h3-style bold text-center mt-3">

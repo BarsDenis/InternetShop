@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-// Mock data since the API endpoint might not be available
 const mockReviews = [
     {
         id: 1,

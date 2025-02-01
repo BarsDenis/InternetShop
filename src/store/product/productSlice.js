@@ -44,10 +44,5 @@ const productSlice = createSlice({
     }
 });
 
-
-// export const selectIsInCart = (state, productId) => {
-//     return state.cart.items.some(item => item.item.id === productId);
-// };
-
 export const { setInCart  } = productSlice.actions;
 export default productSlice.reducer;
