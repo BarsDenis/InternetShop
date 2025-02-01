@@ -5,7 +5,7 @@ import ImgProductSlider from "./ImgProductSlider";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 export default function SingleTemplate({
-    header,
+    title,
     description,
     price,
     image,
@@ -18,12 +18,11 @@ export default function SingleTemplate({
     const dispatch = useDispatch();
     const id = useParams().id;
     const inCart = useSelector((state) => selectIsInCart(state, Number(id)));
-    console.log(inCart);
 
     const handleCart = () => {
         const productData  = {
             id: Number(id),
-            title: header,
+            title: title,
             price: Number(price),
             thumbnail: thumbnail,
             count: 1,
@@ -47,16 +46,16 @@ export default function SingleTemplate({
                 <div className="col">
                     <div className="d-flex flex-jcsb flex-aic mb-2">
                         <div className="bold">
-                            <h1>{header}</h1>
+                            <h1>{title}</h1>
                         </div>
                         <div className="ml-2 ">
                             <FavoriteButton
                                 product={{
                                     id,
-                                    title: header,
+                                    title,
                                     price,
                                     thumbnail,
-                                    stock,
+                                    stock
                                 }}
                             />
                         </div>

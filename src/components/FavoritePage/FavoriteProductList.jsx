@@ -56,7 +56,7 @@ export default function FavoriteProductList() {
                         </div>
                         <div className="d-flex flex-jcsa bold text-purple font-size-l mb-1">
                             <div>Price: ${item.price}</div>
-                            <div>Stock: {item.count}</div>
+                            <div>Stock: {item.stock}</div>
                         </div>
                     </Link>
                     <div className="favorite-wrapper d-flex flex-jcsb">
@@ -78,7 +78,7 @@ export default function FavoriteProductList() {
                                 title: item.title,
                                 price: item.price,
                                 thumbnail: item.thumbnail,
-                                count: item.count,
+                                stock: item.stock,
                                 category: item.category,
                             }}
                         />

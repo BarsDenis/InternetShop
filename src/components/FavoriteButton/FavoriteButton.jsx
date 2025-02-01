@@ -6,6 +6,8 @@ import { favoriteIcon, inFavoriteIcon } from "../UI/Fontawesome";
 const FavoriteButton = ({ product }) => {
     const dispatch = useDispatch();
     const inFavorite = useSelector((state) => selectIsInFavorite(state, product.id));
+    console.log("product", product);
+    console.log("inFavorite", inFavorite);
 
     const handleFavorite = (e) => {
         e.preventDefault();

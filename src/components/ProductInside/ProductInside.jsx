@@ -13,7 +13,10 @@ export default function ProductInside() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     
+
     const { product, status, error } = useSelector(state => state.product);
+
+    
     useEffect(() => {
         dispatch(fetchProduct(id));
     }, [dispatch, id]);
@@ -50,7 +53,7 @@ export default function ProductInside() {
                             alt={product.title}
                         />
                     ))}
-                    header={product.title}
+                    title={product.title}
                     description={product.description}
                     price={product.price}
                     rating={product.rating}

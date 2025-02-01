@@ -11,17 +11,15 @@ function FeaturedProductItem({
     id,
     category,
     thumbnail,
-    stock
+    stock,
 }) {
     return (
         <div>
             <div className="masonry-inner product-item">
                 <Link to={`/product/${id}`} className="product-item-link">
-                    <div style={{ height: 300 }}><img 
-                            src={image} 
-                            alt={title}
-                            
-                        /></div>
+                    <div style={{ height: 300 }}>
+                        <img src={image} alt={title} />
+                    </div>
                     <div>{category}</div>
                     <div className="h3-style bold mb-2 mt-1 text-purple fg-1">
                         {title}
@@ -50,7 +48,7 @@ function FeaturedProductItem({
                             title,
                             price,
                             thumbnail,
-                            count,
+                            stock
                         }}
                     />
                 </div>
